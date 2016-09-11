@@ -1,36 +1,23 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ *Controller name 					: Home
+ *Added date 						: 05.09.2016
+ *Added by 							: Saswata Pal
+ *Description 						: All the home module view pages are loaded from this controllr
+ */
 class Home extends CI_Controller {
-
 	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+	 *Function name 				: index()
+	 *Added date 			 		: 05.09.2016
+	 *Added by                  	: Saswata Pal
+	 *Description       			: Knaut home page will be displayed using this function
+	 */	
 	public function index()
 	{
 		$data = array();
 		$data['title'] = "Knaut";
 		$this->load->view('home', $data);
-	}
-
-
-	public function about()
-	{
-
-		$data = array();
-		$data['title'] = "Knaut|About";
-		$this->load->view('home', $data);	
 	}
 }

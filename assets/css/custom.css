@@ -1,0 +1,35 @@
+.sidebar .profile h4{
+	color: #26a69a;
+}
+div.row.sort-knaut{
+	border-top: 1px solid #49c4c3;
+	margin: 0 0 2% 0;
+}
+
+div.row.upper-section{
+	/*height: 60px*/
+	margin: -10px 0;
+}
+
+.sort-knaut-left-margin{
+	margin : -10px 0 0 50px;
+}
+
+.sort-knaut-left-margin .dropdown-menu > li > a {
+	padding: 3px 20px !important;
+}
+.navbar-subnav .navbar-nav > li.active a {
+    color: #26a69a;
+  	border-bottom: 4px solid #5cd7d6;
+}
+.navbar-subnav .navbar-nav > li a:hover {
+    color: #26a69a;
+}
+.sidebar.sidebar-skin-white .sidebar-menu a {
+  color: #212121;
+}
+
+div.row.upper-section .navbar-nav > li > a {
+    height: 60px;
+    line-height: 60px;
+}

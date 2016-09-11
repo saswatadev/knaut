@@ -4,14 +4,15 @@
 
 angular
     
-    .module('angularstrapApp', [
+    .module('knaut', [
         'ui.router',
-        'angularstrapApp.homeServices'
+        'knaut.homeServices'
     ])
 
     .constant('CONFIG', 
     {
 	    DebugMode: true,
 	    StepCounter: 0,
-	    APIHost: 'http://localhost:12017'
+	    APIHost: 'http://localhost:12017',
+        baseUrl: 'http://localhost/knaut'
 	}); 

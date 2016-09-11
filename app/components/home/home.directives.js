@@ -1,11 +1,12 @@
-angular.module('angularstrapApp')
-    .directive('heroBlock', function() {
+angular.module('knaut')
+
+    .directive('heroBlock',["CONFIG", function(CONFIG) {
         return {
-            templateUrl: '/app/components/home/views/heroblock.view.html'
+            templateUrl: CONFIG.baseUrl+'/app/components/home/views/heroblock.view.html'
         };
-    })
-    .directive('subSection', function() {
+    }])
+    .directive('subSection', ["CONFIG", function(CONFIG) {
         return {
-            templateUrl: '/app/components/home/views/subsection.view.html'
+            templateUrl: CONFIG.baseUrl+'/app/components/home/views/subsection.view.html'
         };
-});
+	}]);
