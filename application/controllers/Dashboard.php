@@ -39,10 +39,10 @@ class Dashboard extends CI_Controller {
 	 *Added by                  	: Saswata Pal
 	 *Description       			: Knaut dashboard delivein page will be displayed using this function
 	 */	
-	public function delivein()
+	public function delvein()
 	{
 		$data = array();
-		$data['title'] = "Knaut|Dashboard|Delive in";
+		$data['title'] = "Knaut|Dashboard|Delve in";
 		$this->load->view('home', $data);	
 	}
 

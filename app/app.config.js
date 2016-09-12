@@ -3,10 +3,13 @@
  */
 
 angular
-    
-    .module('knaut', [
+    .module('app', [
+        'ngResource',
+        'ngSanitize',
+        'ngTouch',
         'ui.router',
-        'knaut.homeServices'
+        'ui.utils',
+        'ui.jq'
     ])
 
     .constant('CONFIG', 

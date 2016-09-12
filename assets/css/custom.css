@@ -33,3 +33,9 @@ div.row.upper-section .navbar-nav > li > a {
     height: 60px;
     line-height: 60px;
 }
+.ls-top-navbar body > .sidebar, .ls-top-navbar .st-container > .sidebar, .ls-top-navbar .ui-view-main dashboard-sidebar > .sidebar {
+    top: 50px;
+}
+.ls-bottom-footer .st-container {
+    padding-bottom: 0px;
+}

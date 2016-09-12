@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Knaut</title>
+  <title><?php echo $title; ?></title>
   <base href="<?php echo base_url();   ?>"></base>
 
   <!-- Vendor CSS BUNDLE
@@ -121,7 +121,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
     The bundle was generated using modern frontend development tools that are provided with the package
     To learn more about the development process, please refer to the documentation.
     Do not use it simultaneously with the separate bundles above. -->
-  <script src="app/js/vendor/all.js"></script>
+  <script src="assets/js/vendor/all.js"></script>
 
   <!-- Vendor Scripts Standalone Libraries -->
   <!-- <script src="js/vendor/core/all.js"></script> -->
@@ -156,7 +156,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!-- App Scripts Bundle
     Includes Custom Application JavaScript used for the current theme/module;
     Do not use it simultaneously with the standalone modules below. -->
-  <script src="app/js/app/app.js"></script>
+  
+  <script src="app/app.config.js"></script>
+  <script src="app/app.states.js"></script>
+  <script src="assets/js/app/app.js"></script>
+  <script src="app/components/dashboard/dashboard.directives.js"></script>
 
   <!-- App Scripts Standalone Modules
     As a convenience, we provide the entire UI framework broke down in separate modules

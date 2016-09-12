@@ -1,4 +1,4 @@
-angular.module('knaut')
+angular.module('app')
 
     .directive('heroBlock',["CONFIG", function(CONFIG) {
         return {
