@@ -17,5 +17,5 @@ angular
 	    DebugMode: true,
 	    StepCounter: 0,
 	    APIHost: 'http://localhost:12017',
-        baseUrl: 'http://localhost/knaut'
+        baseUrl: 'http://localhost/knaut/'
 	}); 

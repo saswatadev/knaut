@@ -39,3 +39,26 @@ div.row.upper-section .navbar-nav > li > a {
 .ls-bottom-footer .st-container {
     padding-bottom: 0px;
 }
+
+.knaut-cover {
+  margin-bottom: 0px;
+}
+
+ul.img-grid.my-knaut-profile li {
+    float: left;
+    margin: 1%;
+    text-align: center;
+    width: 23%;
+}
+.img-grid.my-knaut-profile span,.img-grid.my-knaut-following span {
+    color: #333333;
+}
+ul.img-grid.my-knaut-following div.view-more i{
+  padding: 2% 0 0 0%;
+  width: 100%;
+  text-align: center;
+}
+ul.img-grid.my-knaut-following div span{
+  padding: 0 30%;
+  text-align: center;
+}

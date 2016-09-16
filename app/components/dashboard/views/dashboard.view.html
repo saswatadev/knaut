@@ -1,1 +1,18 @@
-<div ui-view=""></div>
+<!-- Wrapper required for sidebar transitions -->
+<div class="st-container">
+    <!-- Fixed navbar -->
+    <dashboard-navbar></dashboard-navbar>
+    <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
+    <dashboard-sidebar></dashboard-sidebar>
+    <!-- chat section-->
+    <dashboard-chat></dashboard-chat>
+    <!-- sidebar effects OUTSIDE of st-pusher: -->
+    <!-- st-effect-1, st-effect-2, st-effect-4, st-effect-5, st-effect-9, st-effect-10, st-effect-11, st-effect-12, st-effect-13 -->
+    <!-- content push wrapper -->
+    <div class="st-pusher" id="content">
+		<div ui-view class="ui-view-main" />	
+      <!-- /st-content -->
+    </div>
+    <!-- /st-pusher -->
+</div>
+<!-- /st-container -->

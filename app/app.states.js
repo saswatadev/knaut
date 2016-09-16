@@ -4,10 +4,11 @@
  * https://github.com/angular-ui/ui-router/wiki
  */
 angular.module('app')
-    .run([ '$rootScope', '$state', '$stateParams',
-        function ($rootScope, $state, $stateParams) {
+    .run([ '$rootScope', '$state', '$stateParams', 'CONFIG',
+        function ($rootScope, $state, $stateParams, CONFIG) {
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
+            $rootScope.baseUrl = CONFIG.baseUrl;
         }
     ])
 
@@ -56,7 +57,7 @@ angular.module('app')
             .state('dashboard', {
                 abstract : true,
                 url: '/dashboard',
-                template: '<div ui-view class="ui-view-main" />',                        
+                templateUrl: 'app/components/dashboard/views/dashboard.view.html',                        
                 controller: ['$scope', function($scope){
                     $scope.app.settings.htmlClass = 'st-layout ls-top-navbar ls-bottom-footer show-sidebar sidebar-l2';
                 }]
