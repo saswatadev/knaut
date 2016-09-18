@@ -5,6 +5,11 @@
 body{
   font-family: Montserrat;
 }
+img {
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
 .st-content {
     background: #ffffff none repeat scroll 0 0;
 }
@@ -84,6 +89,6 @@ div.sort-knaut-left-margin .navbar-nav > li > a {
     line-height: 50px;
     padding: 0 15px;
 }
-.rating{
-  margin-right: 25%;
+.icon-list.margin-reduce{
+  margin-top: -23px;
 }

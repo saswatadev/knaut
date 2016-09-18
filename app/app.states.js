@@ -6,7 +6,7 @@
 angular.module('app')
     .run([ '$rootScope', '$state', '$stateParams', 'CONFIG',
         function ($rootScope, $state, $stateParams, CONFIG) {
-            $rootScope.$state = $state;
+            $rootScope.$state = $state;            
             $rootScope.$stateParams = $stateParams;
             $rootScope.baseUrl = CONFIG.baseUrl;
         }
@@ -73,7 +73,7 @@ angular.module('app')
             .state('delvein', {
                 parent : 'dashboard',
                 //dashboard/delvein
-                url: '/delivein',
+                url: '/delvein',
                 templateUrl: 'app/components/dashboard/views/dashboard.delvein.view.html'
             })
 
