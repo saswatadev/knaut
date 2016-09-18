@@ -1000,9 +1000,9 @@ html.app-mobile #content .container-fluid {
   margin: -15px 0 15px;
 }
 @media (min-width: 768px) {
-  .navbar-subnav .navbar-nav > li:first-of-type a {
+  /*.navbar-subnav .navbar-nav > li:first-of-type a {
     padding-left: 0;
-  }
+  }*/
 }
 .navbar-subnav .navbar-nav > li.active a {
   color: #fff;

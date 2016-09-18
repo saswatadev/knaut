@@ -1,3 +1,14 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(./fonts/Montserrat-Light.otf);
+}
+body{
+  font-family: Montserrat;
+}
+.st-content {
+    background: #ffffff none repeat scroll 0 0;
+}
+
 .sidebar .profile h4{
 	color: #26a69a;
 }
@@ -12,7 +23,7 @@ div.row.upper-section{
 }
 
 .sort-knaut-left-margin{
-	margin : -10px 0 0 50px;
+	margin : -10px 0 0 15px;
 }
 
 .sort-knaut-left-margin .dropdown-menu > li > a {
@@ -61,4 +72,18 @@ ul.img-grid.my-knaut-following div.view-more i{
 ul.img-grid.my-knaut-following div span{
   padding: 0 30%;
   text-align: center;
+}
+
+.navbar-skin-cover.navbar-skin-cover-white .navbar-nav > li > a {
+    color: #9b9b9b;
+}
+
+div.sort-knaut-left-margin .navbar-nav > li > a {
+    font-size: 1.15rem;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 15px;
+}
+.rating{
+  margin-right: 25%;
 }
