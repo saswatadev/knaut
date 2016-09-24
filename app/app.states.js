@@ -24,8 +24,6 @@ angular.module('app')
             .state('home', {
                 url: '/',
                 templateUrl: 'app/components/home/views/home.view.html',
-                controller: "homeController",
-                controllerAs: 'ctrl'
             })
             .state('404', {
                 url: '/404',
@@ -50,7 +48,7 @@ angular.module('app')
                 parent : 'user',
                 //user/register
                 url: '/register',
-                templateUrl: 'app/components/user/views/user.register.view.html'
+                template: '<user-registration></user-registration>'
             })
 
             //dashboard module start here

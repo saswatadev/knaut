@@ -9,7 +9,9 @@ angular
         'ngTouch',
         'ui.router',
         'ui.utils',
-        'ui.jq'
+        'ui.jq',
+        'validation', 
+        'validation.rule'
     ])
 
     .constant('CONFIG', 

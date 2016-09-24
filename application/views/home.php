@@ -152,16 +152,19 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!-- <script src="js/vendor/tree/jquery.fancytree-all.js"></script> -->
   <!-- <script src="js/vendor/nestable/jquery.nestable.js"></script> -->
   <!-- <script src="js/vendor/angular/all.js"></script> -->
+  <script src="assets/js/vendor/angular/angular-validation.min.js"></script>
+  <script src="assets/js/vendor/angular/angular-validation-rule.js"></script>
 
   <!-- App Scripts Bundle
     Includes Custom Application JavaScript used for the current theme/module;
     Do not use it simultaneously with the standalone modules below. -->
   
   <script src="app/app.config.js"></script>
-  <script src="app/app.states.js"></script>
-  <script src="assets/js/app/app.js"></script>
+  <script src="assets/js/app/app.js"></script>  
+  <script src="assets/js/app/userreg.js"></script>
   <script src="app/components/dashboard/dashboard.directives.js"></script>
-
+  <script src="app/components/user/user.directives.js"></script>
+  <script src="app/app.states.js"></script>
   <!-- App Scripts Standalone Modules
     As a convenience, we provide the entire UI framework broke down in separate modules
     Some of the standalone modules may have not been used with the current theme/module

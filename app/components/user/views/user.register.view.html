@@ -1,1 +1,110 @@
-User register
+<div class="top-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
+            	<form name='registration_form' role="form" action="" method="post" class="f1">
+
+            		<h3>Sign Up & start building your Knaut</h3>
+            		<div class="f1-steps">
+            			<div class="f1-progress">
+            			    <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="4" style="width: 16.66%;"></div>
+            			</div>
+            			<div class="f1-step active">
+            				<div class="f1-step-icon"><i class="fa fa-user"></i></div>
+            				<p>About</p>
+            			</div>
+            			<div class="f1-step">
+            				<div class="f1-step-icon"><i class="fa fa-file-text"></i></div>
+            				<p>Content</p>
+            			</div>
+            		    <div class="f1-step">
+            				<div class="f1-step-icon"><i class="fa fa-twitter"></i></div>
+            				<p>Invite</p>
+            			</div>                        
+                        <div class="f1-step">
+                            <div class="f1-step-icon"><i class="fa fa-heart"></i></div>
+                            <p>Choices</p>
+                        </div>
+            		</div>
+            		
+            		<fieldset class="about">
+            		    <h4>Tell us who you are:</h4>
+            			<div class="form-group">
+            			    <label class="sr-only" for="First name">First name</label>
+                            <input type="text" ng-model="registration.first_name" name="first_name" validator="required" placeholder="First name" class="f1-first-name form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="Last name">Last name</label>
+                            <input type="text" ng-model="registration.last_name"  name="last_name" validator="required" placeholder="Last name" class="f1-last-name form-control">
+                        </div>                        
+                        <div class="form-group">
+                            <label class="sr-only" for="Email">Email</label>
+                            <input type="text" ng-model="registration.email"  name="email" validator="required,email" placeholder="Email" class="f1-last-name form-control">
+                        </div>                        
+                        <div class="form-group">
+                            <label class="sr-only" for="Username">Username</label>
+                            <input type="text" ng-model="registration.username"  name="username" validator="required,minlength=5,maxlength=15" minlength-error-message="Username should be minimum 5 characters" maxlength-error-message="Username should not be more than 15 characters" placeholder="Username" class="f1-last-name form-control">
+                        </div>                    
+                        <div class="form-group">
+                            <label class="sr-only" for="Password">Password</label>
+                            <input type="password" validator="required,minlength=6,maxlength=20" minlength-error-message="Password should be minimum 6 characters" maxlength-error-message="Password should not be more than 20 characters" ng-model="registration.password"  name="password" validator="required" placeholder="Password" class="f1-last-name form-control">
+                        </div>                                            
+                        <div class="form-group">
+                            <label class="sr-only" for="Confirm Password">Confirm Password</label>
+                            <input type="password" ng-model="registration.confirm_password"  name="confirm_password" validator="required" placeholder="Confirm Password" class="f1-last-name form-control">
+                            <span ng-if="registration.confirm_password && registration.confirm_password!=registration.password">
+                                <p class="validation-invalid">Password and Confirm password did not match</p>
+                            </span>
+                        </div>
+                        <div class="f1-buttons">
+                            <button type="button" class="btn btn-next about-sub" validation-submit="registration_form" ng-click="ur.registration.aboutSubmit(ur.registration, 'button.about-sub');">Next</button>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="content">
+                        <h4>Showcase your creation:</h4>
+                        <div class="form-group">
+                            <label class="sr-only" for="f1-email">Email</label>
+                            <input type="text" name="f1-email" placeholder="Email..." class="f1-email form-control" id="f1-email">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="f1-password">Password</label>
+                            <input type="password" name="f1-password" placeholder="Password..." class="f1-password form-control" id="f1-password">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="f1-repeat-password">Repeat password</label>
+                            <input type="password" name="f1-repeat-password" placeholder="Repeat password..." 
+                                                class="f1-repeat-password form-control" id="f1-repeat-password">
+                        </div>
+                        <div class="f1-buttons">
+                            <button type="button" class="btn btn-previous">Skip</button>
+                            <button type="button" class="btn btn-next">Next</button>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <h4>Social media profiles:</h4>
+                        <div class="form-group">
+                            <label class="sr-only" for="f1-facebook">Facebook</label>
+                            <input type="text" name="f1-facebook" placeholder="Facebook..." class="f1-facebook form-control" id="f1-facebook">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="f1-twitter">Twitter</label>
+                            <input type="text" name="f1-twitter" placeholder="Twitter..." class="f1-twitter form-control" id="f1-twitter">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="f1-google-plus">Google plus</label>
+                            <input type="text" name="f1-google-plus" placeholder="Google plus..." class="f1-google-plus form-control" id="f1-google-plus">
+                        </div>
+                        <div class="f1-buttons">
+                            <button type="button" class="btn btn-previous">Previous</button>
+                            <button type="submit" class="btn btn-submit">Submit</button>
+                        </div>
+                    </fieldset>
+            	
+            	</form>
+            </div>
+        </div>
+            
+    </div>
+</div>
