@@ -11,15 +11,17 @@ angular
         'ui.utils',
         'ui.jq',
         'validation', 
-        'validation.rule'
+        'validation.rule',
+        'ckeditor',
+        'ajaxServices',
+        'cgBusy',
     ])
 
     .constant('CONFIG', 
     {
 	    DebugMode: true,
 	    StepCounter: 0,
-	    APIHost: 'http://localhost:12017',
-        baseUrl: 'http://localhost/knaut/'
-        //staging http://knaut.ecodepoint.com/ 
-        //local  http://localhost/knaut/ 
+	    ApiUrl: 'http://api.knaut.ecodepoint.com/firstapi/',
+        baseUrl: 'http://localhost/knaut/', //local
+        //baseUrl: 'http://knaut.ecodepoint.com/' //staging
 	}); 

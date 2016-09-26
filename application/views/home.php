@@ -12,7 +12,8 @@
 
   <!-- Vendor CSS BUNDLE
     Includes styling for all of the 3rd party libraries used with this module, such as Bootstrap, Font Awesome and others.
-    TIP: Using bundles will improve performance by reducing the number of network requests the client needs to make when loading the page. -->
+    TIP: Using bundles will improve performance by reducing the number of network requests the client needs to make when loading the page. --> 
+  <link rel="stylesheet" href="assets/css/angular-busy.css">
   <link href="assets/css/vendor/all.css" rel="stylesheet">
 
   <!-- Vendor CSS Standalone Libraries
@@ -88,7 +89,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 </head>
 
 <body>
-
+  <div cg-busy="{promise:myPromise,message:'Loading...',backdrop:true,templateUrl:'app/shared/angular-busy.html',delay:0, wrapperClass: 'custom-loader' }"></div>
   <div ui-view class="ui-view-main"></div>
 
   <!-- Inline Script for colors and config objects; used by various external scripts; -->
@@ -154,14 +155,18 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!-- <script src="js/vendor/angular/all.js"></script> -->
   <script src="assets/js/vendor/angular/angular-validation.min.js"></script>
   <script src="assets/js/vendor/angular/angular-validation-rule.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/ckeditor.js" type="text/javascript"></script>
+  <script src="assets/js/vendor/angular/angular-ckeditor.min.js"></script>
+  <script src="assets/js/vendor/angular/angular-busy.js"></script>  
   <!-- App Scripts Bundle
     Includes Custom Application JavaScript used for the current theme/module;
     Do not use it simultaneously with the standalone modules below. -->
   
+  <script src="app/shared/ajax.service.js"></script>
   <script src="app/app.config.js"></script>
   <script src="assets/js/app/app.js"></script>  
   <script src="assets/js/app/userreg.js"></script>
+  <script src="app/components/home/home.directives.js"></script>
   <script src="app/components/dashboard/dashboard.directives.js"></script>
   <script src="app/components/user/user.directives.js"></script>
   <script src="app/app.states.js"></script>

@@ -13,6 +13,10 @@ img {
 .st-content {
     background: #ffffff none repeat scroll 0 0;
 }
+.navbar-primary {
+    background-color: #66CECC;
+    border-color: #66CECC;
+}
 
 .sidebar .profile h4{
 	color: #26a69a;
@@ -191,7 +195,7 @@ div.knaut-concept .create-icon-border {
   width:51%;
 }
 .home-banner {
-    top:65px;
+    top:50px;
 }
 .home-banner .carousel-control{
   width: 4%;
@@ -289,12 +293,21 @@ div.container-fluid.home-delve-in h1{
 }
 
 .rating span.star:hover::before, .rating span.star.filled::before, .rating span.star:hover ~ span.star::before {
-    color: #53c1b5;
+    color: #66CECE;
     content: "";
 }
-.timeline-block .panel-heading {
-    background: #53c1b5 none repeat scroll 0 0;
+.breakpoint-320 h1.text-center.center-block.home-delve-in-hedaing,.breakpoint-480 h1.text-center.center-block.home-delve-in-hedaing{
+  font-size: 25px;
 }
+.custom-loader {
+    left: 50%;
+    margin-left: -70px;
+    margin-top: -24px;
+    position: fixed;
+    top: 50%;
+    z-index: 999;
+}
+
 /*validation error*/
 .validation-valid {
     color: #0074D9;
@@ -313,7 +326,31 @@ div.container-fluid.home-delve-in h1{
 
 
 /*user registraion login*/
-
+div.user-reg fieldset.content .row{
+  padding: 0 1%;
+  width: 100%;
+}
+div.user-reg fieldset.content .row>div{
+  padding : 1% 1% 1% 0;
+}
+div.row.register-content-type div.radio_list div{
+   border: 1px solid #49c4c3;
+  color: #49c4c3;
+}
+.radio_list {
+    cursor: pointer;
+    float: left;
+    padding: 0 20px 0 0;
+}
+.radio_list .div_img {
+    background: #49c4c3 none repeat scroll 0 0;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 24px;
+    padding: 0 4px;
+    text-align: center;
+}
 div.user-reg{
   background-image: url("../images/knaut home final-14.jpg") ;
   background-color: #66CECC; 
@@ -376,7 +413,7 @@ div.user-reg textarea:-ms-input-placeholder, textarea.form-control:-ms-input-pla
 div.user-reg input[type="text"]::-webkit-input-placeholder, input[type="password"]::-webkit-input-placeholder, 
 div.user-reg textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder { color: #888; }
 
-div.user-reg label { font-weight: 300; }
+div.user-reg label { font-weight: 300; color: #666666}
 
 
 div.user-reg button.btn {
@@ -452,7 +489,7 @@ div.user-reg button.btn.btn-previous,
 div.user-reg button.btn.btn-previous:focus,
 div.user-reg button.btn.btn-previous:active:focus, button.btn.btn-previous.active:focus { background: #bbb; }
 
-div.user-reg .top-content { padding: 35px 0 170px 0; }
+div.user-reg .top-content { padding: 65px 0; }
 
 div.user-reg .top-content .text { color: #fff; }
 div.user-reg .top-content .text h1 { color: #fff; }

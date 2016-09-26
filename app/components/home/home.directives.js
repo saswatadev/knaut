@@ -1,12 +1,28 @@
 angular.module('app')
 
-    .directive('heroBlock',["CONFIG", function(CONFIG) {
+    .directive('homeHeaderNavBar',["CONFIG", function(CONFIG) {
         return {
-            templateUrl: CONFIG.baseUrl+'/app/components/home/views/heroblock.view.html'
+            templateUrl: CONFIG.baseUrl+'/app/components/home/views/common/home.common.header.navbar.view.html'
         };
     }])
-    .directive('subSection', ["CONFIG", function(CONFIG) {
+    .directive('homeBanner', ["CONFIG", function(CONFIG) {
         return {
-            templateUrl: CONFIG.baseUrl+'/app/components/home/views/subsection.view.html'
+            templateUrl: CONFIG.baseUrl+'/app/components/home/views/home.banner.view.html'
         };
-	}]);
+	}])
+
+    .directive('homeKnautConcept', ["CONFIG", function(CONFIG) {
+        return {
+            templateUrl: CONFIG.baseUrl+'/app/components/home/views/home.knaut.concept.view.html'
+        };
+    }])
+
+    .directive('homeFooter', ["CONFIG", function(CONFIG) {
+        return {
+            templateUrl: CONFIG.baseUrl+'/app/components/home/views/common/home.common.footer.view.html'
+        };
+    }])
+
+    ;
+
+    

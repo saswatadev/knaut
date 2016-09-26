@@ -1,190 +1,20 @@
 <div class="st-container">
-    <!-- Fixed navbar -->
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-home navbar-main navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                </button>
-                <a href="#">
-                <img src="./assets/images/home-knaut-logo.png">
-                </a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="main-nav">
-                <ul class="nav navbar-nav  navbar-right ">
-                    <li>
-                        <a href="#">How it works</a>
-                    </li>
-                    <li>
-                        <a href="#">Delve In</a>
-                    </li>
-                    <li>
-                        <a href="#">Sign In</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-    </div>    
-</div>
-
-<div id="myCarousel" class="carousel slide home-banner" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li><!-- 
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li> -->
-  </ol>  
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">  
-    <div class="item active"> <img src="./assets/images/banner/1.png" alt="...">
-      <div class="carousel-caption">
-        <h1 class="text-uppercase get-the-audience">
-          <span class="clearfix">Get the audience</span> 
-          <span class='big-text clearfix'>you Deserve</span>
-          <button class="btn btn-lg btn-danger join-knaut-btn" type="button">JOIN KNAUT</button>
-        </h1>
-     </div>
-    </div>
-    <!-- Controls --> 
-    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"> 
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 
-      <span class="sr-only">Previous</span> 
-    </a> 
-    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> 
-      <span class="sr-only">Next</span> 
-    </a> 
-  </div>
-</div>
-<div class="container-fluid knaut-concept">
-  <div class="row">
-    <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 text-center">
-      <img class="img-responsive center-block" src="./assets/images/create.jpg"/>
-      <p>
-        <span class="clearfix">
-          The first step, of course, is to <span>sign up as a KNAUTTER</span> and upload your content &ndash; be it <span>text, image, audio or video</span>.
-        </span>
-        <a href="javascript:void(0);">READ MORE...</a>
-      </p>    
-    <div class="create-icon-border"></div>
-    </div>
-    <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 text-center">      
-      <img class="img-responsive center-block" src="./assets/images/add_knaut.jpg"/>
-      <p>
-        <span class="clearfix">
-          After having uploaded your content, the next step is to make it reach the right audience.
-        </span>
-        <a href="javascript:void(0);">READ MORE...</a>
-      </p>
-      <div class="create-icon-border"></div>
-    </div>
-    <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 text-center">        
-      <img class="img-responsive center-block" src="./assets/images/monetize.jpg"/>
-      <p>
-        <span class="clearfix">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </span>
-        <a class="clearfx" href="javascript:void(0);">READ MORE...</a></p>
-    </div>
-  </div>
-</div>
-<div class="container-fluid home-delve-in">
-    <h1 class="text-center center-block">DELVE-IN</h1>
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <!--Dashboard feed section is displayed here-->
-            <dashboard-feed></dashboard-feed>
-        </div>
-    </div>
-</div>
-    <!-- Footer -->
-<footer class="home-footer navbar-default">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <aside class="widget_contact">
-          <h3>ABOUT KNAUT</h3>
-          <div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nisi ligula, placerat eu varius sit amet, aliquet eu dolor. Suspendisse euismod erat elit, vel mattis leo bibendum in. Ut semper sollicitudin risus, et vehicula neque rutrum eu. Integer non ex vitae lorem rutrum rutrum. Quisque pellentesque tincidunt leo in imperdiet.</p>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nisi ligula, placerat eu varius sit amet, aliquet eu dolor. Suspendisse euismod erat elit, vel mattis leo bibendum in. Ut semper sollicitudin risus, et vehicula neque rutrum eu. Integer non ex vitae lorem rutrum rutrum. Quisque pellentesque tincidunt leo in imperdiet.</p>
+  <!-- Fixed navbar -->  
+  <home-header-nav-bar></home-header-nav-bar>
+  <!-- Fixed navbar -->
+  <home-banner></home-banner>
+  <home-knaut-concept></home-knaut-concept>
+  <div class="container-fluid home-delve-in">
+      <h1 class="text-center center-block home-delve-in-hedaing">DELVE-IN</h1>
+      <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+              <!--Dashboard feed section is displayed here-->
+              <dashboard-feed></dashboard-feed>
           </div>
-        </aside>
       </div>
-      <div class="col-md-4">
-        <aside>
-          <h3>SOCIAL FEED</h3>
-          <div>
-            <div id="tfeed">
-              <image class="image-responsive" src="./assets/images/social.jpg">
-            </div>
-          </div>
-        </aside>
-      </div>
-      <div class="col-md-4 home-contact-us">
-        <h3>CONTACT US</h3>
-        <div>
-          <ul>
-            <li>19th Ave Sacramento</li>
-            <li>CA 95822</li>
-            <li>Phone : +1 916-875-2236</li>
-            <li>Fax : +916-875-0000</li>
-            <li>India</li>
-          </ul>
-          <p>Email : first.last@example.com</p>
-          <div>
-            <h3>SUBSCRIBE</h3>
-            <div class="input-group" style="width:250px;">
-              <form>
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="enter your email">
-                  <span class="input-group-btn">
-                  <input class="btn btn-primary" type="submit" value="submit">
-                  </span> 
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <h3>FOLLOW US</h3>
-            </div>
-            <div class="col-md-6">
-              <ul class="icon-list">
-                <li><a href="#"><i class="fa fa-pinterest fa-4x"></i></a></li>
-                <li><a href="#"><i class="fa fa-facebook fa-4x"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter fa-4x"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
-  <div class="navbar navbar-home-footer navbar-main" role="navigation">
-    <div class="container">
-      <ul class="nav navbar-nav  navbar-left">
-        <li>
-            <a href="#">How it works</a>
-        </li>
-        <li>
-            <a href="#">Delve In</a>
-        </li>
-        <li>
-            <a href="#">Sign In</a>
-        </li>
-      </ul>
-      <div class="navbar-right">
-        <span>© Copyright KNAUT</span>
-      </div>
-    </div>
-  </div>
-</footer>
-    <!-- // Footer -->
+  <!-- Footer -->
+  <home-footer></home-footer>  
+  <!-- Footer -->
 </div>
 <!-- /st-container -->
