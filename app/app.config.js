@@ -15,6 +15,8 @@ angular
         'ckeditor',
         'ajaxServices',
         'cgBusy',
+        'ngCookies',
+        'multipleSelect'
     ])
 
     .constant('CONFIG', 

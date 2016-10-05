@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2 text">
+        <h1>Sign up and start building your <img height="50px" src="./assets/images/logo.png"></h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
+        <form name='registration_form_step1' role="form" action="" method="post" class="f1" novalidate>
+        	<fieldset class="about"> 
+                <div class="row clearfix signup-header">
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <h3 class="primary">Provide your details</h3>
+                    </div>
+                </div> 
+                <h5 class="text-right primary">Fields marked as <span class="mandatory_field_star">*</span> are mandatory</h5> 
+                <div class="form-group">
+        		    <label for="First name">First name <span class="mandatory_field_star">*</span></label>
+                    <input type="text" ng-model="ur1.registration.first_name" name="first_name" validator="required" placeholder="First name" class="f1-first-name form-control">
+                </div>
+                <div class="form-group">
+                    <label for="Last name">Last name <span class="mandatory_field_star">*</span></label>
+                    <input type="text" ng-model="ur1.registration.last_name"  name="last_name" validator="required" placeholder="Last name" class="f1-last-name form-control">
+                </div>                        
+                <div class="form-group">
+                    <label for="Email">Email <span class="mandatory_field_star">*</span></label>
+                    <input type="text" ng-model="ur1.registration.email"  name="email" validator="required,email" placeholder="Email" class="f1-last-name form-control">
+                    <span ng-if="ur1.registration.emailAlreadyExist">
+                        <p class="validation-invalid">Email already exist</p>
+                    </span>
+                </div>                        
+                <div class="form-group">
+                    <label for="Username">Username <span class="mandatory_field_star">*</span></label>
+                    <input type="text" ng-model="ur1.registration.username"  name="username" validator="required,minlength=5,maxlength=15" minlength-error-message="Username should be minimum 5 characters" maxlength-error-message="Username should not be more than 15 characters" placeholder="Username" class="f1-last-name form-control">
+                    <span ng-if="ur1.registration.usernameAlreadyExist">
+                        <p class="validation-invalid">Username already exist</p>
+                    </span>
+                </div>                    
+                <div class="form-group">
+                    <label for="Password">Password <span class="mandatory_field_star">*</span></label>
+                    <input type="password" validator="required,minlength=6,maxlength=20" minlength-error-message="Password should be minimum 6 characters" maxlength-error-message="Password should not be more than 20 characters" ng-model="ur1.registration.password"  name="password" validator="required" placeholder="Password" class="f1-last-name form-control">
+                </div>                                            
+                <div class="form-group">
+                    <label for="Confirm Password">Confirm Password <span class="mandatory_field_star">*</span></label>
+                    <input type="password" ng-model="ur1.registration.confirm_password"  name="confirm_password" validator="required" placeholder="Confirm Password" class="f1-last-name form-control">
+                    <span ng-if="ur1.registration.confirm_password && ur1.registration.confirm_password!=ur1.registration.password">
+                        <p class="validation-invalid">Password and Confirm password did not match</p>
+                    </span>
+                </div>
+                <div class="f1-buttons">
+                    <button type="button" class="btn btn-next about-sub" validation-submit="registration_form_step1" ng-click="ur1.registration.aboutSubmit(ur1.registration);">Next</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

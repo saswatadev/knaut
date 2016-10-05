@@ -58,4 +58,30 @@ class Dashboard extends CI_Controller {
 		$data['title'] = "Knaut|Dashboard|Profile";
 		$this->load->view('home', $data);	
 	}
+
+	/**
+	 *Function name 				: followers()
+	 *Added date 			 		: 05.09.2016
+	 *Added by                  	: Saswata Pal
+	 *Description       			: Knaut dashboard followers
+	 */	
+	public function followers()
+	{
+		$data = array();
+		$data['title'] = "Knaut|Dashboard|Followers";
+		$this->load->view('home', $data);	
+	}
+
+	/**
+	 *Function name 				: following()
+	 *Added date 			 		: 05.09.2016
+	 *Added by                  	: Saswata Pal
+	 *Description       			: Knaut dashboard followers
+	 */	
+	public function following()
+	{
+		$data = array();
+		$data['title'] = "Knaut|Dashboard|Following";
+		$this->load->view('home', $data);	
+	}
 }

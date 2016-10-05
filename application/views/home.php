@@ -48,6 +48,7 @@ NOTE:
 TIP:
     - Using bundles will improve performance by greatly reducing the number of network requests the client needs to make when loading the page. -->
   <link href="assets/css/app/app.css" rel="stylesheet">
+  <link href="assets/css/multiple-select.min.css" rel="stylesheet">
   <link href="assets/css/custom.css" rel="stylesheet">
   <!-- App CSS CORE
 This variant is to be used when loading the separate styling modules -->
@@ -158,6 +159,8 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/ckeditor.js" type="text/javascript"></script>
   <script src="assets/js/vendor/angular/angular-ckeditor.min.js"></script>
   <script src="assets/js/vendor/angular/angular-busy.js"></script>  
+  <script src="assets/js/vendor/angular/angular-cookies.min.js"></script>
+  <script src="assets/js/vendor/angular/multiple-select.min.js"></script>
   <!-- App Scripts Bundle
     Includes Custom Application JavaScript used for the current theme/module;
     Do not use it simultaneously with the standalone modules below. -->
@@ -165,7 +168,6 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
   <script src="app/shared/ajax.service.js"></script>
   <script src="app/app.config.js"></script>
   <script src="assets/js/app/app.js"></script>  
-  <script src="assets/js/app/userreg.js"></script>
   <script src="app/components/home/home.directives.js"></script>
   <script src="app/components/dashboard/dashboard.directives.js"></script>
   <script src="app/components/user/user.directives.js"></script>

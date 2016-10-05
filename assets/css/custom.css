@@ -194,17 +194,18 @@ div.knaut-concept .create-icon-border {
   left: 76.5%;
   width:51%;
 }
-.home-banner {
-    top:50px;
-}
 .home-banner .carousel-control{
   width: 4%;
 }
+.home-banner {
+    top:50px;
+}
 .home-banner .carousel-caption{
-  left: 7%;
-  right: 0;
+  left: 4%;
+  max-width: 550px;
+  padding: 0;
   text-align: left;
-  top: 30%;    
+  top: 12%;
 }
 .breakpoint-1024 .text-uppercase.get-the-audience {
     font-size: 4rem;
@@ -214,6 +215,9 @@ div.knaut-concept .create-icon-border {
 .breakpoint-1024 .get-the-audience .big-text {
     font-size: 5.5rem;
 }
+.breakpoint-1024 .join-knaut-btn{
+  margin-left: 33%
+}
 .breakpoint-768 .text-uppercase.get-the-audience {
     font-size: 2.2rem;
     font-weight: bold;
@@ -222,11 +226,11 @@ div.knaut-concept .create-icon-border {
 .breakpoint-768 .get-the-audience .big-text {
     font-size: 3rem;
 }
-.breakpoint-320 .home-banner .carousel-caption{  
-  top: 5%;    
+.breakpoint-768 .join-knaut-btn{
+  margin-left: 13%
 }
 .breakpoint-480 .home-banner .carousel-caption{
- top: 20%; 
+  top: 3%;
 }
 .breakpoint-480 .text-uppercase.get-the-audience {
     font-size: 1.5rem;
@@ -234,11 +238,18 @@ div.knaut-concept .create-icon-border {
     line-height: 32px;
 }
 .breakpoint-480 .join-knaut-btn{
-  font-size: 15px;
-  padding: 8px;
+  font-size: 12px;
+  padding: 5px;
+  margin-left: 12%;
 }
 .breakpoint-480 .get-the-audience .big-text {
     font-size: 2.1rem;
+}
+.breakpoint-480 .home-banner .carousel-caption{
+  top: 3%;
+}
+.breakpoint-320 .home-banner .carousel-caption{
+  top: -2%;
 }
 .breakpoint-320 .text-uppercase.get-the-audience {
     font-size: 1rem;
@@ -249,14 +260,15 @@ div.knaut-concept .create-icon-border {
     font-size: 1.4rem;
 }
 .breakpoint-320 .join-knaut-btn{
-  font-size: 13px;
-  padding: 6px;
+  font-size: 10px;
+  padding: 4px;
+  margin-left: 12%
 }
 div.container-fluid.home-delve-in h1{ 
   border-bottom: 2px solid #6dd7d4;
   color: #454a52;
   padding: 16px;
-  width: 195px;
+  width: 225px;
   margin-bottom: 20px;
 
 }
@@ -308,6 +320,13 @@ div.container-fluid.home-delve-in h1{
     z-index: 999;
 }
 
+span.mandatory_field_star{
+  color: #f35b3f;
+}
+ul li.no_user{
+  padding: 6px 0; 
+  margin-left: 20px;
+}
 /*validation error*/
 .validation-valid {
     color: #0074D9;
@@ -326,6 +345,25 @@ div.container-fluid.home-delve-in h1{
 
 
 /*user registraion login*/
+div.user-reg{
+  min-height: 500px !important;
+}
+div.user-reg h1{
+    text-align: center;
+}
+div.user-reg .f1-steps{ 
+  margin-bottom: 20px;
+}
+div.user-reg fieldset div.signup-header.row div.skip-reg{
+  position: absolute;
+  bottom: 5%;
+  right: 0;
+}
+div.user-reg .signup-header{
+  border-bottom: 1px solid #cacaca;
+  padding: 10px 0;
+  position: relative;
+}
 div.user-reg fieldset.content .row{
   padding: 0 1%;
   width: 100%;
@@ -463,6 +501,9 @@ div.user-reg h4 {
     color: #555;
     line-height: 26px;
 }
+div.user-reg h5 {
+  color: #555;
+}
 
 div.user-reg img { max-width: 100%; }
 
@@ -512,7 +553,7 @@ div.user-reg .f1-steps { overflow: hidden; position: relative; margin-top: 20px;
 div.user-reg .f1-progress { position: absolute; top: 24px; left: 0; width: 100%; height: 1px; background: #ddd; }
 div.user-reg .f1-progress-line { position: absolute; top: 0; left: 0; height: 1px; background: #f35b3f; }
 
-div.user-reg .f1-step { position: relative; float: left; width: 25%; padding: 0 12.50%; }
+div.user-reg .f1-step { position: relative; float: left; width: 24%; padding: 0 11%; }
 
 div.user-reg .f1-step-icon {
   display: inline-block; width: 40px; height: 40px; margin-top: 4px; background: #ddd;
@@ -531,10 +572,61 @@ div.user-reg .f1-step p { color: #ccc; }
 div.user-reg .f1-step.activated p { color: #f35b3f; }
 div.user-reg .f1-step.active p { color: #f35b3f; }
 
-div.user-reg .f1 fieldset { display: none; text-align: left; }
+div.user-reg .f1 fieldset {text-align: left; }
 
 div.user-reg .f1-buttons { text-align: right; }
 
 div.user-reg .f1 .input-error { border-color: #f35b3f; }
+div.user-reg .content .invite{
+  margin-top: 20px;
+  padding: 10px 0;
+  border-top: 1px solid #cacaca;
+}
+div.user-reg .content .invite-heading{
+  color: #277579;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #cacaca; 
+  font-weight: 500;
+}
+div.user-reg .content .invite-content{
+  margin: 10px 0;
+}
+div.user-reg .content .invite-left{
+  background-color: #EEEEEE;
+}
+div.user-reg .content .invite-left a{
+    padding: 10px 30px;
+    color: #5fafa7;
+}
+div.user-reg .content .invite-right{
+  background-color: #F7F7F7;
+  padding: 30px;
+}
+div.user-reg .content .invite-right a{
+    padding: 15px;
+    color: #555;
+}
+div.user-reg .content .tell-us-section{
+  border-bottom: 1px solid #cacaca; 
+}
+div.user-reg .content .tell-us-section .right-section{
+  padding : 5% 0;
+}
+div.user-reg .content .tell-us-section h3{
+  padding:20% 0;
+}
 
+form.user-login h2{
+  color: #277574;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 30px;
+}
+form.user-login a{
+  color: #26a69a;
+}
+form.user-login .log-in-using i{
+  padding: 10px 5px;
+  color: #85CDCC;
+}
 /*user registraion login*/

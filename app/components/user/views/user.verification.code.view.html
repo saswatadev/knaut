@@ -1,0 +1,11 @@
+<div class="top-content">
+	<div class="container">
+		<div class="row">
+		    <div class="col-sm-8 col-sm-offset-2 text">
+		        <h1 ng-if="!v.succesMessage && !v.errorMessage"><img src="./assets/images/sidebar-logo.png">Verifying..</h1>
+		        <h1 ng-if="v.succesMessage"><img src="./assets/images/sidebar-logo.png">{{v.succesMessage}}</h1>
+		        <h1 ng-if="v.errorMessage"><img src="./assets/images/sidebar-logo.png">{{v.errorMessage}}</h1>
+		    </div>
+		</div>
+	</div>
+</div>
