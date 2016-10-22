@@ -336,8 +336,16 @@ ul li.no_user{
     color: #F35B3F;
 }
 /*validation error*/
-
-
+.coverphoto, .output {
+  width: 100%;
+  height: 200px;
+  border: 1px solid black;
+  margin: 10px auto;
+}
+.coverphoto-container div.actions{
+  top:75%!important;
+  left:8px!important;
+}
 
 
 

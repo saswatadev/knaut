@@ -47,8 +47,10 @@ NOTE:
       See src/less/themes/admin-angular/app.less
 TIP:
     - Using bundles will improve performance by greatly reducing the number of network requests the client needs to make when loading the page. -->
-  <link href="assets/css/app/app.css" rel="stylesheet">
+  
   <link href="assets/css/multiple-select.min.css" rel="stylesheet">
+  <link href="assets/css/app/app.css" rel="stylesheet">
+  <link href="assets/css/coverphoto.css" rel="stylesheet">
   <link href="assets/css/custom.css" rel="stylesheet">
   <!-- App CSS CORE
 This variant is to be used when loading the separate styling modules -->
@@ -154,6 +156,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!-- <script src="js/vendor/tree/jquery.fancytree-all.js"></script> -->
   <!-- <script src="js/vendor/nestable/jquery.nestable.js"></script> -->
   <!-- <script src="js/vendor/angular/all.js"></script> -->
+  <script src="assets/js/vendor/coverphoto.js"></script>  
   <script src="assets/js/vendor/angular/angular-validation.min.js"></script>
   <script src="assets/js/vendor/angular/angular-validation-rule.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/ckeditor.js" type="text/javascript"></script>

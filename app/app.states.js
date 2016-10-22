@@ -24,8 +24,11 @@ angular.module('app')
             .state('home', {
                 url: '/',
                 templateUrl: 'app/components/home/views/home.view.html',
-                controller: function($scope){
+                controller: function($scope, $cookieStore, $location){
                     $scope.app.settings.htmlClass = '';
+                    if($cookieStore.get('userId') && $cookieStore.get('passKey')){          
+                        $location.path('dashboard/knautboard');
+                    }
                 }
             })
             .state('404', {
@@ -124,7 +127,7 @@ angular.module('app')
                 parent : 'dashboard',
                 //dashboard/profile
                 url: '/profile',
-                templateUrl: 'app/components/dashboard/views/dashboard.profile.view.html'
+                template: '<dashboard-profile><dashboard-profile>'
             })
 
             .state('followers', {
@@ -139,6 +142,13 @@ angular.module('app')
                 //dashboard/profile
                 url: '/following',
                 templateUrl: 'app/components/dashboard/views/dashboard.following.view.html'
+            })
+
+            .state('post', {
+                parent : 'dashboard',
+                //dashboard/post
+                url: '/post',
+                template: '<dashboard-post></dashboard-post>'
             })
             
         }

@@ -14,7 +14,7 @@ angular.module('app')
                 $scope.app.settings.htmlClass = 'st-layout ls-top-navbar ls-bottom-footer show-sidebar sidebar-l2';
                 if($cookieStore.get('userId') && $cookieStore.get('passKey')){                        
                     $rootScope.userId = $cookieStore.get('userId');
-                    $rootScope.userId = $cookieStore.get('passKey');
+                    $rootScope.passKey = $cookieStore.get('passKey');
                     $rootScope.firstName = $cookieStore.get('firstName');
                     $rootScope.lastName = $cookieStore.get('lastName');    
                 }else{
@@ -138,11 +138,46 @@ angular.module('app')
         };
     }])
 
+    .directive('dashboardProfile', ["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
+        return {
+            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/dashboard.profile.view.html',
+            controllerAs : 'p',
+            controller: function(ajaxService, $scope, $cookieStore, $location){
+                p = this;
+                var param = {'member_id' : $cookieStore.get('userId'),'user_id' : $cookieStore.get('userId'), 'passkey' : $cookieStore.get('passKey'), 'member_id' : $cookieStore.get('userId'), 'page': 1 , 'page_size': 5};
+                ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/details.json', function(result){
+                    if(result){
+                        if (result.response.status.action_status == 'true') {
+                            p.profileDetails = result.response.dataset;
+                        } else {
+                            p.profileDetails = '';
+                        }
+                        
+                    }
+                    $(function() {
+                      $(".coverphoto").CoverPhoto({
+                        currentImage: './assets/images/profile-cover.jpg',
+                        editable: true
+                      });
+                      $(".coverphoto").bind('coverPhotoUpdated', function(evt, dataUrl) {
+                        $(".output").empty();
+                        $("<img>").attr("src", dataUrl).appendTo(".output");
+                      });
+                    }); 
+                    
+                }); 
+            }
+        };
+    }])
+
     .directive('profileSubNavbar', ["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
         return {
             templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/common/profile.common.subnavbar.view.html'
         };
     }])
 
-
-    ;
+    .directive('dashboardPost', ["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
+        return {
+            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/dashboard.post.view.html'
+        };
+    }]);

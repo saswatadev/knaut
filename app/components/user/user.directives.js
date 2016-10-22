@@ -206,7 +206,7 @@ angular.module('app')
 				ur4.registration = {
 					checkValid: $validationProvider.checkValid,
 					step4Submit: function(){
-						$location.path('dashboard/knautboard');
+						$location.path('user/login');
 					}
 				}
 	        }
@@ -218,9 +218,7 @@ angular.module('app')
 	    	templateUrl: CONFIG.baseUrl+'/app/components/user/views/user.login.view.html',
 	        controllerAs: 'l',	        
 	        controller: function($scope, $cookieStore, $location){
-	        	if($cookieStore.get('userId') && $cookieStore.get('userName')){
-					$rootScope.userId = $cookieStore.get('userId');
-					$rootScope.userName = $cookieStore.get('userName');					
+	        	if($cookieStore.get('userId') && $cookieStore.get('passKey')){			
 					$location.path('dashboard/knautboard');
 				}
 
@@ -262,9 +260,7 @@ angular.module('app')
 	    	templateUrl: CONFIG.baseUrl+'/app/components/user/views/user.forget.password.view.html',
 	        controllerAs: 'f',	        
 	        controller: function($scope, $cookieStore, $location){	        	
-	        	if($cookieStore.get('userId') && $cookieStore.get('userName')){
-					$rootScope.userId = $cookieStore.get('userId');
-					$rootScope.userName = $cookieStore.get('userName');					
+	        	if($cookieStore.get('userId') && $cookieStore.get('passKey')){		
 					$location.path('dashboard/knautboard');
 				}
 
@@ -302,9 +298,7 @@ angular.module('app')
     		templateUrl: CONFIG.baseUrl+'/app/components/user/views/user.verification.code.view.html',
 	        controllerAs: 'v',	        
 	        controller: function($scope, $cookieStore, $location, $stateParams){	        	
-	        	if($cookieStore.get('userId') && $cookieStore.get('userName')){
-					$rootScope.userId = $cookieStore.get('userId');
-					$rootScope.userName = $cookieStore.get('userName');					
+	        	if($cookieStore.get('userId') && $cookieStore.get('passKey')){			
 					$location.path('dashboard/knautboard');
 				}
 
@@ -334,9 +328,7 @@ angular.module('app')
     		templateUrl: CONFIG.baseUrl+'/app/components/user/views/user.reset.password.view.html',
 	        controllerAs: 'r',	        
 	        controller: function($scope, $cookieStore, $location, $stateParams){	        	
-	        	if($cookieStore.get('userId') && $cookieStore.get('userName')){
-					$rootScope.userId = $cookieStore.get('userId');
-					$rootScope.userName = $cookieStore.get('userName');					
+	        	if($cookieStore.get('userId') && $cookieStore.get('passKey')){			
 					$location.path('dashboard/knautboard');
 				}
         	
