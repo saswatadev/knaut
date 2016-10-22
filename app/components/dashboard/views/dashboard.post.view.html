@@ -1,0 +1,89 @@
+<div class="top-content">
+     <div class="container">
+		<div class="row">
+		    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
+		        <form name='registration_form_step2' role="form" action="" method="post" class="f1" novalidate>
+		            <fieldset class="about content">
+		                <h5 class="text-right primary">Fields marked as <span class="mandatory_field_star">*</span> are mandatory</h5>               
+		                <div class="form-group">
+		                    <label for="f1-facebook">Select content type <span class="mandatory_field_star">*</span></label>
+		                    <div class="clear"></div>
+		                    <div class="row register-content-type">
+		                        <div class="radio_list col-sm-6 col-xs-12 col-md-3 col-lg-3">
+		                            <div>
+		                                <div class="div_img">
+		                                    <img src="./assets/images/blog-icon.png">
+		                                </div>
+		                                <p class="radio-inline">
+		                                    <input type="radio" ng-required="!ur2.registration.content_type" value="B" ng-model="ur2.registration.content_type" name="content_type"> 
+		                                    <label>Blog</label>
+		                                </p>
+		                            </div>
+		                        </div>
+		                        <div class="radio_list col-sm-6 col-xs-12 col-md-3 col-lg-3">
+		                            <div>
+		                                <div class="div_img">
+		                                    <img src="./assets/images/image-icon.png">
+		                                </div>
+		                                <p class="radio-inline">
+		                                    <input type="radio" ng-required="!ur2.registration.content_type" value="I" ng-model="ur2.registration.content_type" name="content_type"> 
+		                                    <label>Image</label>
+		                                </p>
+		                            </div>
+		                        </div>
+		                        <div class="radio_list col-sm-6 col-xs-12 col-md-3 col-lg-3">
+		                            <div>
+		                                <div class="div_img">
+		                                    <img src="./assets/images/audio-icon.png">
+		                                </div>
+		                                <p class="radio-inline">
+		                                    <input type="radio" ng-required="!ur2.registration.content_type" value="A" ng-model="ur2.registration.content_type" name="content_type"> 
+		                                    <label>Audio</label>
+		                                </p>
+		                            </div>
+		                        </div>
+		                        <div class="radio_list col-sm-6 col-xs-12 col-md-3 col-lg-3">
+		                            <div>
+		                                <div class="div_img">
+		                                    <img src="./assets/images/video-icon.png">
+		                                </div>
+		                                <p class="radio-inline">
+		                                    <input type="radio" ng-required="!ur2.registration.content_type" value="V" ng-model="ur2.registration.content_type" name="content_type"> 
+		                                    <label>Video</label>
+		                                </p>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="form-group">
+		                    <label for="f1-content_title">Title <span class="mandatory_field_star">*</span></label>
+		                    <input type="text" name="content_title" ng-model="ur2.registration.content_title" validator="required" placeholder="Title" class="form-control">
+		                </div>
+		                <div ng-if="ur2.registration.content_type=='B'" class="form-group">
+		                    <label for="f1-content_title">Description <span class="mandatory_field_star">*</span></label>
+		                    <div ckeditor="ur2.ckeditorOption" ng-model="ur2.registration.content" ready="onReady()"></div>
+		                </div>
+		                <div ng-if="ur2.registration.content_type=='I' || ur2.registration.content_type=='A' || ur2.registration.content_type=='V'" class="form-group">
+		                    <label for="f1-content_title">Uplaod file <span class="mandatory_field_star">*</span></label>
+		                    <input type="file" validator="required" name="content_description" ng-model="ur2.registration.content_description">
+		                </div>                        
+		                <div  ng-if="ur2.registration.content_type=='I' || ur2.registration.content_type=='A' || ur2.registration.content_type=='V'" class="form-group">
+		                    <label for="f1-description">Description <span class="mandatory_field_star">*</span></label>
+		                    <input type="text" validator="required" ng-model="ur2.registration.description" name="description" placeholder="Description" class="form-control">
+		                </div>
+		                <div class="form-group">
+		                    <label for="f1-category">Category <span class="mandatory_field_star">*</span></label>
+		                    <multiple-autocomplete ng-model="ur2.registration.category"
+		                         object-property="cat_name"
+		                         suggestions-arr="optionsList">
+		                    </multiple-autocomplete>
+		                </div>
+		                <div class="f1-buttons">
+		                    <button type="button" class="btn btn-next" validation-submit="registration_form_step2" ng-click="ur2.registration.step2Submit(ur2.registration);">Upload</button>
+		                </div>
+		            </fieldset>
+		        </form>
+		    </div>
+		</div>
+	</div>
+</div>
