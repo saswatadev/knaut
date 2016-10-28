@@ -130,6 +130,27 @@ angular.module('app')
                 template: '<dashboard-profile><dashboard-profile>'
             })
 
+            .state('profile.home', { 
+                parent : 'profile',
+                //dashboard/profile/home
+                url: '/home',
+                template: '<dashboard-profile-home><dashboard-profile-home>'
+            })
+
+            .state('profile.edit', { 
+                parent : 'profile',
+                //dashboard/profile/edit
+                url: '/edit',
+                template: '<dashboard-profile-edit><dashboard-profile-edit>'
+            })
+
+            .state('profile.changepassword', { 
+                parent : 'profile',
+                //dashboard/profile/edit
+                url: '/changepassword',
+                template: '<dashboard-profile-change-password><dashboard-profile-change-password>'
+            })
+            
             .state('followers', {
                 parent : 'dashboard',
                 //dashboard/profile
@@ -148,7 +169,7 @@ angular.module('app')
                 parent : 'dashboard',
                 //dashboard/post
                 url: '/post',
-                template: '<dashboard-post></dashboard-post>'
+                template: '<dashboard-post></dashboard-post>',
             })
             
         }

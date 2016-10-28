@@ -172,7 +172,8 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
   <script src="app/app.config.js"></script>
   <script src="assets/js/app/app.js"></script>  
   <script src="app/components/home/home.directives.js"></script>
-  <script src="app/components/dashboard/dashboard.directives.js"></script>
+  <script src="app/components/dashboard/dashboard.directives.js"></script>  
+  <script src="app/components/dashboard/dashboard.profile.directives.js"></script>
   <script src="app/components/user/user.directives.js"></script>
   <script src="app/app.states.js"></script>
   <!-- App Scripts Standalone Modules

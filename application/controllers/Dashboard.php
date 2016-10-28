@@ -52,10 +52,14 @@ class Dashboard extends CI_Controller {
 	 *Added by                  	: Saswata Pal
 	 *Description       			: Knaut dashboard profile page will be displayed using this function
 	 */	
-	public function profile()
+	public function profile($page)
 	{
 		$data = array();
-		$data['title'] = "Knaut|Dashboard|Profile";
+		if(!empty($page)){
+			$data['title'] = "Knaut|Dashboard|Profile|".$page;	
+		}else{
+			$data['title'] = "Knaut|Dashboard|Profile|";
+		}
 		$this->load->view('home', $data);	
 	}
 

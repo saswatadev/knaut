@@ -78,7 +78,9 @@
               <a href="#" class="dropdown-toggle user" data-toggle="dropdown">
                 <img src="./assets/images/no_profile_image.png" alt="{{firstName}}" class="img-circle" width="40" /> {{firstName}}<span class="caret"></span>
               </a>
-              <ul class="dropdown-menu" role="menu">                
+              <ul class="dropdown-menu" role="menu">                  
+                <li><a ng-href="{{baseUrl}}dashboard/profile/edit">Edit Profile</a></li> 
+                <li><a ng-href="{{baseUrl}}dashboard/profile/changepassword">Change Password</a></li>                
                 <li><a href="javascript:void(0);">Setting</a></li>  
                 <li><a href="javascript:void(0);">Wallet</a></li>
                 <li><a href="javascript:void(0);">Public Profile</a></li>
@@ -88,6 +90,5 @@
           </ul>
         </div>
         <!-- /.navbar-collapse -->
-
       </div>
     </div>

@@ -40,7 +40,46 @@ angular.module('app')
     }])
     .directive('dashboardSidebar', ["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
         return {
-            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/common/dashboard.common.sidebar.view.html'
+            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/common/dashboard.common.sidebar.view.html',
+            controllerAs : 's',
+            controller: function(ajaxService, $scope, $cookieStore, $location){
+                s = this;
+                var param = {'member_id' : $cookieStore.get('userId'),'user_id' : $cookieStore.get('userId'), 'passkey' : $cookieStore.get('passKey'), 'member_id' : $cookieStore.get('userId'), 'page': 1 , 'page_size': 5};
+                ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/details.json', function(result){
+                    if(result){
+                        if (result.response.status.action_status == 'true') {
+                            s.profileDetails = result.response.dataset;
+                        } else {
+                            s.profileDetails = '';
+                        }
+                        
+                    }
+                    $(function() {
+                      $(".profileImage").CoverPhoto({
+                        currentImage: './assets/images/no_profile_image.png',
+                        editable: true
+                      });
+                      $(".profileImage").bind('coverPhotoUpdated', function(evt, dataUrl) {
+                        $(".output").empty();
+                        $("<img>").attr("src", dataUrl).appendTo(".output");
+                        var param = {'user_id' : $cookieStore.get('userId'), 'passkey' : $cookieStore.get('passKey'), 'userfile' : dataUrl};
+                        ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/addProfilePicture.json', function(result){
+                            if(result){
+                                if (result.response.status.action_status == 'true') {
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                                
+                            }
+                            
+                        });
+
+                      });
+                    }); 
+                    
+                }); 
+            }
         };
 	}])
 
@@ -137,47 +176,92 @@ angular.module('app')
             templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/common/dashboard.common.chat.view.html'
         };
     }])
-
-    .directive('dashboardProfile', ["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
+    
+    .directive('dashboardPost', ["CONFIG", '$rootScope', '$validation', function(CONFIG, $rootScope, $validationProvider) {
         return {
-            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/dashboard.profile.view.html',
-            controllerAs : 'p',
-            controller: function(ajaxService, $scope, $cookieStore, $location){
-                p = this;
-                var param = {'member_id' : $cookieStore.get('userId'),'user_id' : $cookieStore.get('userId'), 'passkey' : $cookieStore.get('passKey'), 'member_id' : $cookieStore.get('userId'), 'page': 1 , 'page_size': 5};
-                ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/details.json', function(result){
+            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/dashboard.post.view.html',
+            controllerAs: 'ur2',
+            controller: function(ajaxService, CONFIG, $scope, $cookieStore, $location){
+                ur2 = this;
+                $scope.postFileUplaod = function(event){
+                    var input = event.target;
+                    console.log(input);
+                    var reader = new FileReader();
+                    reader.onload = function(){
+                        var dataURL = reader.result;
+                        console.log(dataURL);
+                    }
+                }
+                $(document).on('change', '#postfileupload', function(){
+                    ur2.registration.postFile = this.files[0];
+                })
+                ur2.registration = {
+                    checkValid: $validationProvider.checkValid,
+                    step2Submit: function(){
+                        //console.log(ur2.registration);
+                        //if(ur2.registration.content_type=='B'){
+                        var category = ur2.registration .category.length > 0 ? ur2.registration.category.join() : '';
+                        var param = {
+                            'user_id' : $cookieStore.get('userId'), 
+                            'passkey' : $cookieStore.get('passKey'),
+                            'content_type' : ur2.registration.content_type, 
+                            'cat_name' : '', 
+                            'cat_id' : category, 
+                            'title' : ur2.registration.content_title,
+                            'description' : ur2.registration.content,
+                        };
+
+                        ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/addPost.json', function(result){
+                            if(result){
+                                if (result.response.status.action_status == 'true') {
+                                    if(ur2.registration.content_type=='B'){
+                                        $location.path('dashboard/knautboard');
+                                    }else{
+                                        var postId = result.response.dataset.TblPostsComment.id; 
+                                        ur2.registration.postFile
+                                        var formData = new FormData();
+
+                                        formData.append("user_id", $cookieStore.get('userId'));
+                                        formData.append("passkey", $cookieStore.get('passKey'));
+                                        formData.append("post_id", postId); 
+                                        formData.append("content_type", ur2.registration.content_type);
+                                        formData.append("content_type_details", ur2.registration.postFile);                                        
+                                        //console.log(formData);
+                                        ajaxService.AjaxPhpPostFile(formData, CONFIG.ApiUrl+'profiles/addPostFile.json', function(result){
+                                            if(result){
+                                                if (result.response.status.action_status == 'true') {
+                                                    $location.path('dashboard/knautboard');
+                                                } else {
+                                                    return false;
+                                                }
+                                                
+                                            }
+                                            
+                                        });
+                                    }
+                                } else {
+                                    return false;
+                                }
+                                
+                            }
+                            
+                        });
+                    }
+                }
+                ur2.optionsList = [];
+                ajaxService.AjaxPhpPost({}, CONFIG.ApiUrl+'members/fetchCategory.json', function(result){
                     if(result){
                         if (result.response.status.action_status == 'true') {
-                            p.profileDetails = result.response.dataset;
+                            ur2.optionsList = result.response.dataset.cat_name;
+                            //ur2.optionsList = [{"id":4,"cat_name":"Photography"},{"id":1,"cat_name":"Painting"}]
                         } else {
-                            p.profileDetails = '';
+                            ur2.optionsList = [{"id":4,"cat_name":"Photography"},{"id":1,"cat_name":"Painting"}];
+                            return false;
                         }
                         
                     }
-                    $(function() {
-                      $(".coverphoto").CoverPhoto({
-                        currentImage: './assets/images/profile-cover.jpg',
-                        editable: true
-                      });
-                      $(".coverphoto").bind('coverPhotoUpdated', function(evt, dataUrl) {
-                        $(".output").empty();
-                        $("<img>").attr("src", dataUrl).appendTo(".output");
-                      });
-                    }); 
                     
-                }); 
+                });
             }
-        };
-    }])
-
-    .directive('profileSubNavbar', ["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
-        return {
-            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/common/profile.common.subnavbar.view.html'
-        };
-    }])
-
-    .directive('dashboardPost', ["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
-        return {
-            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/dashboard.post.view.html'
         };
     }]);

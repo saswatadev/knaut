@@ -348,9 +348,22 @@ ul li.no_user{
 }
 
 
+div.profileImage .coverphoto-container .coverphoto-photo-container{
+  position: inherit;
+}
 
-
-
+div.profileImage .coverphoto-container .coverphoto-photo-container img{
+  border-radius: 50%;
+}
+.coverphoto-container .actions .edit .item,.coverphoto-container .actions .edit .item:hover{
+  background-color: #22958B;
+}
+.coverphoto-container .actions .chooser .item,.coverphoto-container .actions .chooser .item:hover{
+  background-color: #22958B;
+}
+.navbar-skin-cover .navbar-nav .open > a, .navbar-skin-cover .navbar-nav .open > a:focus, .navbar-skin-cover .navbar-nav .open > a:hover {
+    background-color: #66cecc;
+}
 
 /*user registraion login*/
 div.user-reg{

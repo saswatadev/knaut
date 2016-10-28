@@ -7,7 +7,7 @@ this["CoverPhotoTemplates"] = this["CoverPhotoTemplates"] || {};
 this["CoverPhotoTemplates"]["src/templates/actions.jst"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<div class="actions">\n  <ul class="chooser">\n    <li class="open-menu item"><a href="#change_cover_photo">Change cover photo</a></li>\n    <ul class="sub-menu">\n      <li class="upload item"><a href="#upload_cover_photo">Upload new photo</a></li>\n    </ul>\n  </ul>\n  <ul class="edit">\n    <li class="cancel item"><a href="#cancel">Cancel</a></li>\n    <li class="save item"><a href="#save">Save</a></li>\n  </ul>\n</div>';
+__p+='<div class="actions">\n  <ul class="chooser">\n    <li class="open-menu item"><a href="#change_cover_photo">Change photo</a></li>\n    <ul class="sub-menu">\n      <li class="upload item"><a href="#upload_cover_photo">Upload new photo</a></li>\n    </ul>\n  </ul>\n  <ul class="edit">\n    <li class="cancel item"><a href="#cancel">Cancel</a></li>\n    <li class="save item"><a href="#save">Save</a></li>\n  </ul>\n</div>';
 }
 return __p;
 };
