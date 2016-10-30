@@ -353,7 +353,7 @@ div.profileImage .coverphoto-container .coverphoto-photo-container{
 }
 
 div.profileImage .coverphoto-container .coverphoto-photo-container img{
-  border-radius: 50%;
+  /*border-radius: 50%;*/
 }
 .coverphoto-container .actions .edit .item,.coverphoto-container .actions .edit .item:hover{
   background-color: #22958B;

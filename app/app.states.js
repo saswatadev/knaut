@@ -113,7 +113,7 @@ angular.module('app')
                 parent : 'dashboard',
                 //dashboard/knautboard
                 url: '/knautboard',
-                templateUrl: 'app/components/dashboard/views/dashboard.knautboard.view.html',
+                template: '<dashboard-knautboard></dashboard-knautboard>',
             })
 
             .state('delvein', {

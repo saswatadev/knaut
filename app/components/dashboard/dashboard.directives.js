@@ -56,8 +56,10 @@ angular.module('app')
                     }
                     $(function() {
                       $(".profileImage").CoverPhoto({
-                        currentImage: './assets/images/no_profile_image.png',
-                        editable: true
+                        currentImage: s.profileDetails.profile_img,
+                        editable: true,
+                        height : 150,
+                        width : 150,
                       });
                       $(".profileImage").bind('coverPhotoUpdated', function(evt, dataUrl) {
                         $(".output").empty();
@@ -155,9 +157,37 @@ angular.module('app')
             }
         };
     }])
+
+    .directive('dashboardKnautboard',["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
+        return {
+            templateUrl: CONFIG.baseUrl+'app/components/dashboard/views/dashboard.knautboard.view.html',
+            controllerAs: 'k',
+            controller: function(ajaxService, CONFIG, $scope, $cookieStore, $location){
+                k = this;
+                var param = {
+                            'user_id' : $cookieStore.get('userId'), 
+                            'passkey' : $cookieStore.get('passKey'),
+                            'member_id' : $cookieStore.get('userId')
+                        };
+
+                ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/getallProfileFeed.json', function(result){
+                    if(result){
+                        if (result.response.status.action_status == 'true') {
+                            k.knautFeed = result.response.dataset;
+                        } else {
+                            return false;
+                        }
+                        
+                    }
+                    
+                });
+            }
+        };
+    }])
+
     .directive('dashboardSubNavbar',["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
         return {
-            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/common/dashboard.common.subnavbar.view.html'
+            templateUrl: CONFIG.baseUrl+'app/components/dashboard/views/common/dashboard.common.subnavbar.view.html'
         };
     }])
     .directive('dashboardSubNavbarUpperSection',["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
@@ -165,9 +195,15 @@ angular.module('app')
             templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/common/dashboard.common.subnavbar.uppersection.view.html'
         };
     }])
+
     .directive('dashboardFeed', ["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
         return {
-            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/common/dashboard.common.feed.view.html'
+            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/common/dashboard.common.feed.view.html',
+            scope: {
+                feed: '=',
+            },
+            link: function (scope, element, attrs) {
+            }        
         };
     }])
 

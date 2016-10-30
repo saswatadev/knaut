@@ -15,37 +15,40 @@ angular.module('app')
                 var param = {'member_id' : $cookieStore.get('userId'),'user_id' : $cookieStore.get('userId'), 'passkey' : $cookieStore.get('passKey'), 'member_id' : $cookieStore.get('userId'), 'page': 1 , 'page_size': 5};
                 ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/details.json', function(result){
                     if(result){
+                        //console.log(result);
                         if (result.response.status.action_status == 'true') {
-                            p.profileDetails = result.response.dataset;
+                            p.profileDetails = result.response.dataset;                            
+                            $(function() {
+                              $(".coverphoto").CoverPhoto({
+                                currentImage: p.profileDetails.cover_img,
+                                editable: true,
+                                height:300,
+                                width : 1150
+                              });
+                              $(".coverphoto").bind('coverPhotoUpdated', function(evt, dataUrl) {
+                                $(".output").empty();
+                                $("<img>").attr("src", dataUrl).appendTo(".output");
+                                var param = {'user_id' : $cookieStore.get('userId'), 'passkey' : $cookieStore.get('passKey'), 'userfile' : dataUrl};
+                                ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/addCoverPicture.json', function(result){
+                                    if(result){
+                                        if (result.response.status.action_status == 'true') {
+                                            return true;
+                                        } else {
+                                            return false;
+                                        }
+                                        
+                                    }
+                                    
+                                });
+
+                              });
+                            }); 
+
                         } else {
                             p.profileDetails = '';
                         }
                         
-                    }
-                    $(function() {
-                      $(".coverphoto").CoverPhoto({
-                        currentImage: './assets/images/profile-cover.jpg',
-                        editable: true
-                      });
-                      $(".coverphoto").bind('coverPhotoUpdated', function(evt, dataUrl) {
-                        $(".output").empty();
-                        $("<img>").attr("src", dataUrl).appendTo(".output");
-                        var param = {'user_id' : $cookieStore.get('userId'), 'passkey' : $cookieStore.get('passKey'), 'userfile' : dataUrl};
-                        ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/addCoverPicture.json', function(result){
-                            if(result){
-                                if (result.response.status.action_status == 'true') {
-                                    return true;
-                                } else {
-                                    return false;
-                                }
-                                
-                            }
-                            
-                        });
-
-                      });
-                    }); 
-                    
+                    }                    
                 }); 
             }
         };

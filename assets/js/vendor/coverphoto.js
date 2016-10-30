@@ -104,8 +104,10 @@ return __p;
           this.addImage(this.options.currentImage);
         }
         $(".actions", this.$el).css("top", this.$el.height() - 35);
-        $("canvas", this.$el).attr("width", this.$el.width());
-        return $("canvas", this.$el).attr("height", this.$el.height());
+        var height = this.options.height ? this.options.height : this.$el.height();
+        var width = this.options.width ? this.options.width : this.$el.width();
+        $("canvas", this.$el).attr("width", width);
+        return $("canvas", this.$el).attr("height", height);
       };
 
       CoverPhoto.prototype.on = function() {
@@ -291,8 +293,10 @@ return __p;
         var context, dataUrl, height, image, width;
         image = $(".coverphoto-photo-container img", this.$el);
         context = this.canvas[0].getContext("2d");
-        width = image.width();
+        width = this.options.width ? this.options.width : image.width();
         height = image.height();
+        console.log(width);
+        console.log(height);
         context.drawImage(image[0], 0, image.position().top, width, height);
         dataUrl = this.canvas[0].toDataURL("image/png");
         this.hiddenImageInput.val(dataUrl);
