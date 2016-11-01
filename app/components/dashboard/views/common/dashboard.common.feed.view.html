@@ -20,27 +20,27 @@
                     </div>
                   </div>
                 </div>
-                <div ng-bind-html="f.post_content" class="panel-body" ng-if="f.post_content_category=='B'">
+                <div ng-bind-html="f.post_content| limitHtml: 500" class="panel-body" ng-if="f.post_content_category=='B'">
                 </div>                
                 <div class="panel-body" ng-if="f.post_content_category=='I'">                  
                   <div class="cover overlay cover-image-full">
                     <img width="315px" ng-src="{{f.media_details[0].img_url}}"/>
                   </div>
-                  <p>{{f.post_content}}</p>
+                  <p>{{f.post_content | limitTo: 200}}</p>
                 </div>                
                 <div class="panel-body" ng-if="f.post_content_category=='V'">
                   <video width="315" height="240" controls>
                     <source src="" dynamic-url dynamic-url-src="{{f.media_details[0].img_url}}" type="audio/mpeg" type="video/mp4">
                   Your browser does not support the video tag.
                   </video>
-                  <p>{{f.post_content}}</p>
+                  <p>{{f.post_content | limitTo: 200}}</p>
                 </div>                
                 <div class="panel-body" ng-if="f.post_content_category=='A'">
                   <audio controls>
                     <source src="" dynamic-url dynamic-url-src="{{f.media_details[0].img_url}}" type="audio/mpeg">
                   Your browser does not support the audio element.
                   </audio>
-                  <p>{{f.post_content}}</p>
+                  <p>{{f.post_content | limitTo: 200}}</p>
                 </div>
                 <div class="panel-body panel-boxed text-muted top-border-removed">  
                  <span ng-if="f.category_name">From <a href="javascript:void(0);"> {{f.category_name}}</a></span>
