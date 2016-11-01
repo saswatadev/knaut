@@ -55,7 +55,7 @@ angular.module('app')
         };
     }])
     
-    .directive('dashboardProfileEdit', ["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
+    .directive('dashboardProfileEdit', ["CONFIG", '$rootScope', '$validation', function(CONFIG, $rootScope, $validationProvider) {
         return {
             templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/profile/dashboard.profile.edit.view.html',
             controllerAs : 'e',
@@ -66,11 +66,30 @@ angular.module('app')
                 ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/details.json', function(result){
                     if(result){
                         if (result.response.status.action_status == 'true') {
-                            e.profileDetails = result.response.dataset.details.User; 
+                            e.profileDetails = result.response.dataset.details.User;
+                            e.profileDetails.checkValid = $validationProvider.checkValid;
 
                         }
                     }
                 })
+
+                e.editSubmit = function(){
+                    ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'members/signup.json', function(result){
+                        if(result){
+                            if (result.response.status.action_status == 'true') {
+                                $rootScope.userId = result.response.dataset.user_id;
+                                $rootScope.userName = result.response.dataset.username;
+                                $cookieStore.put('userId',  result.response.dataset.user_id);
+                                $cookieStore.put('userName', result.response.dataset.username);
+                                $location.path('user/registration/step2');
+                            } else {
+                                return false;
+                            }
+                            
+                        }
+                        
+                    }); 
+                }
             }
         };
     }])
