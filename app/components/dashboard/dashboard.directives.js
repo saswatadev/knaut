@@ -1,5 +1,14 @@
 angular.module('app')
 
+    .directive('dynamicUrl', function () {
+        return {
+            restrict: 'A',
+            link: function postLink(scope, element, attr) {
+                element.attr('src', attr.dynamicUrlSrc);
+            }
+        };
+    })
+
     .directive('dashboard',["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
         return {            
             template: '<div class="st-container">\
@@ -42,13 +51,14 @@ angular.module('app')
         return {
             templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/common/dashboard.common.sidebar.view.html',
             controllerAs : 's',
-            controller: function(ajaxService, $scope, $cookieStore, $location){
+            controller: function(ajaxService, $scope, $cookieStore, $location, $rootScope){
                 s = this;
                 var param = {'member_id' : $cookieStore.get('userId'),'user_id' : $cookieStore.get('userId'), 'passkey' : $cookieStore.get('passKey'), 'member_id' : $cookieStore.get('userId'), 'page': 1 , 'page_size': 5};
                 ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/details.json', function(result){
                     if(result){
                         if (result.response.status.action_status == 'true') {
                             s.profileDetails = result.response.dataset;
+                            $rootScope.profileDetails = result.response.dataset;
                         } else {
                             s.profileDetails = '';
                         }
