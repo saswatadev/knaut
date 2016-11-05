@@ -74,14 +74,20 @@ angular.module('app')
                 })
 
                 e.editSubmit = function(){
-                    ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'members/signup.json', function(result){
+                    e.profileDetails.member_id = $cookieStore.get('userId');
+                    e.profileDetails.user_id = $cookieStore.get('userId');
+                    e.profileDetails.passkey = $cookieStore.get('passKey');
+                    var param = e.profileDetails;
+                    ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/editProfile.json', function(result){
                         if(result){
                             if (result.response.status.action_status == 'true') {
-                                $rootScope.userId = result.response.dataset.user_id;
-                                $rootScope.userName = result.response.dataset.username;
-                                $cookieStore.put('userId',  result.response.dataset.user_id);
-                                $cookieStore.put('userName', result.response.dataset.username);
-                                $location.path('user/registration/step2');
+                                ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/details.json', function(result){
+                                    if(result){
+                                        if (result.response.status.action_status == 'true') {
+                                            $rootScope.profileDetails = result.response.dataset;
+                                        }
+                                    }
+                                })
                             } else {
                                 return false;
                             }

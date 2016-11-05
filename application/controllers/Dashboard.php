@@ -34,6 +34,19 @@ class Dashboard extends CI_Controller {
 	}
 
 	/**
+	 *Function name 				: addknaut()
+	 *Added date 			 		: 05.09.2016
+	 *Added by                  	: Saswata Pal
+	 *Description       			: Knaut dashboard knautboard page will be displayed using this function
+	 */	
+	public function addknaut()
+	{
+		$data = array();
+		$data['title'] = "Knaut|Dashboard|Knaut add";
+		$this->load->view('home', $data);	
+	}
+
+	/**
 	 *Function name 				: delivein()
 	 *Added date 			 		: 05.09.2016
 	 *Added by                  	: Saswata Pal

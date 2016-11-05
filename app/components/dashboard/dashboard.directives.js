@@ -37,8 +37,35 @@ angular.module('app')
                     $rootScope.firstName = $cookieStore.get('firstName');
                     $rootScope.lastName = $cookieStore.get('lastName');    
                 }else{
+                    $cookieStore.remove('userId');
+                    $cookieStore.remove('passKey');
+                    $cookieStore.remove('firstName');
+                    $cookieStore.remove('lastName');
                     $location.path('/');
                 }
+            }]
+        };
+    }])
+
+    .directive('dashboardAddKnaut',["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
+        return {
+            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/dashboard.add.knaut.view.html',
+            controllerAs : 'a',
+            controller: ['$scope', 'ajaxService', '$rootScope', '$cookieStore', '$location', function($scope, ajaxService, $rootScope, $cookieStore, $location){
+                a = this;
+                var param = {'user_id' : $cookieStore.get('userId'), 'passkey' : $cookieStore.get('passKey'), 'member_id' : $cookieStore.get('userId'), 'page': 1 , 'page_size': 100};
+                ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/getFollowerConnection.json', function(result){
+                    if(result){
+                        if (result.response.status.action_status == 'true') {
+                            a.followers = result.response.dataset.follower_list;
+                            console.log(a.followers);
+                        } else {
+                            a.followers = [];
+                        }
+                        
+                    }
+                    
+                }); 
             }]
         };
     }])
@@ -57,6 +84,7 @@ angular.module('app')
             }]
         };
     }])
+
     .directive('dashboardSidebar', ["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
         return {
             templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/common/dashboard.common.sidebar.view.html',
@@ -69,6 +97,7 @@ angular.module('app')
                         if (result.response.status.action_status == 'true') {
                             s.profileDetails = result.response.dataset;
                             $rootScope.profileDetails = result.response.dataset;
+                            $rootScope.profileDetails.profile_img = $rootScope.profileDetails.profile_img ? $rootScope.profileDetails.profile_img : CONFIG.baseUrl+'assets/images/no_profile_image.png';
                         } else {
                             s.profileDetails = '';
                         }

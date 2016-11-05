@@ -130,6 +130,13 @@ angular.module('app')
                 template: '<dashboard-profile><dashboard-profile>'
             })
 
+            .state('addknaut', {
+                parent : 'dashboard',
+                //dashboard/addknaut
+                url: '/addknaut',
+                template: '<dashboard-add-knaut><dashboard-add-knaut>'
+            })
+
             .state('profile.home', { 
                 parent : 'profile',
                 //dashboard/profile/home

@@ -364,6 +364,20 @@ div.profileImage .coverphoto-container .coverphoto-photo-container img{
 .navbar-skin-cover .navbar-nav .open > a, .navbar-skin-cover .navbar-nav .open > a:focus, .navbar-skin-cover .navbar-nav .open > a:hover {
     background-color: #66cecc;
 }
+.page-section-heading {
+    margin-top: -5px;
+    padding: 0 0 10px;
+    text-align: center;
+}
+.checkbox.checkbox-inline{
+  margin-right: 10px;
+  margin-left: 0px;
+}
+
+.select-body{
+  margin-top: 10px;
+}
+
 
 /*user registraion login*/
 div.user-reg{

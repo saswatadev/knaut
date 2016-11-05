@@ -6,12 +6,12 @@
         <div class="profileImage">
 
         </div>
-        <h4>{{firstName}} {{lastName}}</h4>
+        <h4>{{profileDetails.details.User.first_name}} {{profileDetails.details.User.last_name}}</h4>
       </div>
     </div>
     <ul class="sidebar-menu">
       <li>
-        <a href="javascript:void(0);">
+        <a ng-href="{{baseUrl}}dashboard/addknaut">
           <i class="fa fa-plus-square" aria-hidden="true"></i>
           <span>Create New</span>
           <img class="sidebar_logo2" src="./assets/images/sidebar-logo.png">              
