@@ -18,41 +18,7 @@
 	</div>
 
   	<div class="container-fluid">
-  		<div class="timeline row" data-toggle="isotope">
-          <div class="col-xs-12 col-md-3 col-lg-3 item">
-            <div class="timeline-block">
-              <div class="panel panel-default share clearfix-xs">
-                <div class="panel-heading panel-heading-gray title">
-                  Connect
-                </div>
-                <div class="panel-body">
-                  <textarea name="status" class="form-control share-text" rows="3" placeholder="Share your status..."></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xs-12 col-md-5 col-lg-5 item">
-          	<div class="timeline-block">
-              <div class="panel panel-default share clearfix-xs">
-                <div class="panel-heading panel-heading-gray title">
-                  Already Knauted
-                </div>
-            	</div>
-        	</div>
-          </div>
-
-          <div class="col-xs-12 col-md-4 col-lg-4 item">
-          	<div class="timeline-block">
-              <div class="panel panel-default share clearfix-xs">
-                <div class="panel-heading panel-heading-gray title">
-                  Members
-                </div>
-            	</div>
-        	</div>
-          </div>
-
-  		</div>
+  		<my-knaut-feed feed="$root.knautFeed"></my-knaut-feed>
   	</div>
   </div>
   <!-- /st-content-inner -->

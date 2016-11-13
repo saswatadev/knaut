@@ -28,6 +28,43 @@ angular.module('app')
         };
     }])
 
+    .directive('myKnautMembers',["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
+        return {
+            templateUrl: CONFIG.baseUrl+'app/components/dashboard/views/knaut/dashboard.my.knaut.members.view.html',
+            controllerAs: 'm',
+            controller: function(ajaxService, $rootScope, CONFIG, $scope, $cookieStore, $location){
+                m = this;
+                var param = {
+                            'user_id' : $cookieStore.get('userId'), 
+                            'passkey' : $cookieStore.get('passKey'),
+                            'group_id' : $rootScope.knautId
+                        };
+
+                ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'groups/getAllMembers.json', function(result){
+                    if(result){
+                        if (result.response.status.action_status == 'true') {
+                            console.log(result.response);
+                        } else {
+                            return false;
+                        }
+                        
+                    }
+                    
+                });
+            }
+        };
+    }])
+
+    .directive('myKnautFeed',["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
+        return {
+            templateUrl: CONFIG.baseUrl+'app/components/dashboard/views/knaut/dashboard.my.knaut.feed.view.html',
+            scope: {
+                feed: '='
+            },
+            controller: 'feedController'
+        };
+    }])
+
     .directive('dashboardMyKnaut',["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
         return {
             templateUrl: CONFIG.baseUrl+'app/components/dashboard/views/knaut/dashboard.my.knaut.view.html',
@@ -35,11 +72,13 @@ angular.module('app')
             controller: function(ajaxService, $stateParams, $rootScope, CONFIG, $scope, $cookieStore, $location){
                 p = this;
                 p.knautId = $stateParams.knautId;
+                $rootScope.knautId = $stateParams.knautId;
                 var param = {'user_id' : $cookieStore.get('userId'), 'passkey' : $cookieStore.get('passKey'), 'group_id' : p.knautId};
                 ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'groups/groupDtl.json', function(result){
                     if(result){
                         //console.log(result);
                         if (result.response.status.action_status == 'true') {
+                            //console.log(result.response.dataset);
                             p.profileDetails = result.response.dataset;  
                             p.profileDetails.cover_img = p.profileDetails.cover_img ? p.profileDetails.cover_img : CONFIG.baseUrl+'assets/images/knaut-default_pic.jpg';                         
                             $(function() { 
@@ -75,6 +114,24 @@ angular.module('app')
                         
                     }                    
                 }); 
+
+                var param = {
+                            'user_id' : $cookieStore.get('userId'), 
+                            'passkey' : $cookieStore.get('passKey'),
+                            'group_id' : p.knautId
+                        };
+
+                ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/getGroupFeeds.json', function(result){
+                    if(result){
+                        if (result.response.status.action_status == 'true') {
+                            $rootScope.knautFeed = result.response.dataset;
+                        } else {
+                            return false;
+                        }
+                        
+                    }
+                    
+                });
             }
         };
     }])

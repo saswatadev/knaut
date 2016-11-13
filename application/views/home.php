@@ -173,6 +173,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
   <script src="app/app.config.js"></script>
   <script src="assets/js/app/app.js"></script>  
   <script src="app/components/home/home.directives.js"></script>
+  <script src="app/components/dashboard/feed.controller.js"></script>
   <script src="app/components/dashboard/dashboard.knaut.directives.js"></script>
   <script src="app/components/dashboard/dashboard.sidebar.directives.js"></script>
   <script src="app/components/dashboard/dashboard.directives.js"></script>  
