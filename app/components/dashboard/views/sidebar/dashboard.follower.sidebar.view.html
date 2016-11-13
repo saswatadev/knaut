@@ -1,0 +1,22 @@
+<ul class="sidebar-menu">
+    <li class="hasSubmenu">     
+        <a data-toggle="collapse" href="#followers">
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <span>Followers</span>
+        </a>
+        <ul ng-if="f.followerList.length>0" class="panel-collapse collapse" id="followers">
+            <li ng-repeat="fu in f.followerList">
+                <a href="#">        
+                    <img ng-if="fu.profile_img" ng-src="{{fu.profile_img}}" height="30" width="30" />
+                    <img ng-if="!fu.profile_img" ng-src="{{baseUrl}}assets/images/no_profile_image.png" height="30" width="30" />
+                    <span>{{fu.first_name}} {{fu.last_name}}</span>
+                </a>
+            </li>
+            <li class="no_user"><a ng-href="{{baseUrl}}dashboard/followers">More</a></li>       
+        </ul>
+        <ul ng-if="!f.followerList" class="panel-collapse collapse" id="followers">
+            <li class="no_user">No followers</li>
+            <li class="no_user"><a ng-href="{{baseUrl}}dashboard/followers">More</a></li>
+        </ul>
+  </li>
+</ul>

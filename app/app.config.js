@@ -16,7 +16,8 @@ angular
         'ajaxServices',
         'cgBusy',
         'ngCookies',
-        'multipleSelect'
+        'multipleSelect',
+        'checklist-model'
     ])
 
     .constant('CONFIG', 

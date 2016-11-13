@@ -1,0 +1,59 @@
+
+<!-- sidebar effects INSIDE of st-pusher: -->
+<!-- st-effect-3, st-effect-6, st-effect-7, st-effect-8, st-effect-14 -->
+<!-- this is the wrapper for the content -->
+<div class="st-content">
+  <!-- extra div for emulating position:fixed of the menu -->
+  <div class="st-content-inner">
+    <!--Dashboard sub nab bar is displayed here-->
+    <dashboard-sub-navbar-upper-menu></dashboard-sub-navbar-upper-menu>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid profile-nav">
+	    <ul class="nav navbar-nav navbar-left">
+	      <li ng-class="p.knautId==fu.TblGroup.id ? 'active' : ''" ng-repeat="fu in $root.knautList"><a ng-href="{{baseUrl}}dashboard/myknaut/{{fu.TblGroup.id}}">{{fu.TblGroup.group_name}}</a></li>
+	    </ul>
+	  </div>
+	</nav>  
+    <div class="cover coverphoto knaut-cover overlay cover-image-full height-300-lg profile">
+	</div>
+
+  	<div class="container-fluid">
+  		<div class="timeline row" data-toggle="isotope">
+          <div class="col-xs-12 col-md-3 col-lg-3 item">
+            <div class="timeline-block">
+              <div class="panel panel-default share clearfix-xs">
+                <div class="panel-heading panel-heading-gray title">
+                  Connect
+                </div>
+                <div class="panel-body">
+                  <textarea name="status" class="form-control share-text" rows="3" placeholder="Share your status..."></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-md-5 col-lg-5 item">
+          	<div class="timeline-block">
+              <div class="panel panel-default share clearfix-xs">
+                <div class="panel-heading panel-heading-gray title">
+                  Already Knauted
+                </div>
+            	</div>
+        	</div>
+          </div>
+
+          <div class="col-xs-12 col-md-4 col-lg-4 item">
+          	<div class="timeline-block">
+              <div class="panel panel-default share clearfix-xs">
+                <div class="panel-heading panel-heading-gray title">
+                  Members
+                </div>
+            	</div>
+        	</div>
+          </div>
+
+  		</div>
+  	</div>
+  </div>
+  <!-- /st-content-inner -->
+</div>

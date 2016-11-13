@@ -1,6 +1,77 @@
 <div class="container-fluid">
+  <div id="popover-content" class="hide">
+    <form name="knautShare" action="javascript:void(0)" method="post">
+      <ul ng-if="$root.knautList.length>0" class="knaut-share in panel-collapse collapse" >
+          <li ng-repeat="fu in $root.knautList">
+              <div class="">
+                  <input type="checkbox" name='knautgroup[]' data-post-id="{{postId}}" data-knaut-id="{{fu.TblGroup.id}}" value="{{fu.TblGroup.id}}">
+                  <label>{{fu.TblGroup.group_name}}</label>
+                  <input type="hidden" name='postid' value="{{postId}}">
+              </div>
+          </li>
+          <input type="submit" class="btn btn-submit" value="Submit" class="knautgroup">
+          <br>
+          <li class="no_user"><a class="allgroup" data-post-id='{{postId}}' href="javascript:void(0);">All</a></li>
+          <hr>
+      </ul>
+    </form>
+    <a class="custom-user-click" data-toggle="modal" data-target="#custom-user" href="#">
+      <i class="fa fa-user" aria-hidden="true"></i>
+      Custom Users
+    </a>   
+  </div>
+
+  <div id="custom-user" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Select Friends</h4>
+        </div>
+        <div class="modal-body">
+        <div ng-if="successMessage" class="alert alert-success fade in" style="margin-top:18px;">
+            <a href="#" class="close" ng-click='successMessage=""' data-dismiss="alert" aria-label="close" title="close">×</a>
+            {{successMessage}}
+
+        </div>
+          <form name="knautSharefriends" action="javascript:void(0)" method="post">
+            <div class="form-group">
+                <div class="checkbox select-header">
+                  <input type="checkbox" ng-model="allFriends" id="inlineCheckbox" ng-click="a.checkAllFriends();">
+                  <label for="inlineCheckbox">Select All Friends</label>
+                </div>
+                <div class="select-body">
+                  <div class="checkbox checkbox-inline" ng-repeat="(key,f) in $root.followerList">
+                    <input name="friends[]" value="{{f.id}}" id="inlineCheckbox{{key}}" type="checkbox" ng-checked="allFriends">
+                    <label for="inlineCheckbox{{key}}">
+                      <div class="check-image">
+                        <img ng-if="f.profile_img" ng-src="{{f.profile_img}}" height="40" width="40"/>
+                        <img ng-if="!f.profile_img" ng-src="{{$root.baseUrl}}assets/images/no_profile_image.png" height="40" width="40"/>
+                      </div>
+                      <div>
+                        {{f.first_name}} {{f.last_name}}
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                  <input type="hidden" name='postidFriends' value="{{postId}}">
+                  <input type="submit" class="btn btn-submit" value="Submit">
+              </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
   <div class="timeline row" data-toggle="isotope"> 
-    <div class="col-xs-12 col-md-6 col-lg-4 item" ng-repeat="f in feed
+    <div ng-if="feed.length>0" class="col-xs-12 col-md-6 col-lg-4 item" ng-init="$last ? setupPopOver() : ''" ng-repeat="f in feed | filter: $root.searchKeyword
 ">
         <div class="timeline-block">
             <div class="panel panel-default">
@@ -12,7 +83,7 @@
                       </a>
                     </div>
                     <div class="media-body">
-                      <a href="#" class="pull-right text-muted">
+                      <a ng-click="openShareKnaut(f.id);" href="javascript:void(0);" title="Share" data-toggle="popover" data-placement="auto top" data-html='true' data-content="" class="pull-right text-muted">
                         <img src='./assets/images/sidebar-logo.png'>
                       </a>                
                       <a href="javascript:void(0);">{{f.first_name}} {{f.last_name}}</a>
@@ -48,11 +119,11 @@
                 </div>
                 <div class="panel-body panel-boxed text-muted text-left">
                   <div class="rating">
-                      <span class="star"></span>
-                      <span class="star filled"></span>
-                      <span class="star filled"></span>
-                      <span class="star filled"></span>
-                      <span class="star filled"></span>
+                      <span ng-class="f.no_rating>=5 ? 'filled' : ''" class="star"></span>
+                      <span ng-class="f.no_rating>=4 ? 'filled' : ''" class="star"></span>
+                      <span ng-class="f.no_rating>=3 ? 'filled' : ''" class="star"></span>
+                      <span ng-class="f.no_rating>=2 ? 'filled' : ''" class="star"></span>
+                      <span ng-class="f.no_rating>=1 ? 'filled' : ''" class="star"></span>
                   </div>
                   <ul class="icon-list margin-reduce text-right">
                     <li><i class="fa fa-eye" aria-hidden="true"></i> {{f.no_views}}</li>
@@ -62,7 +133,9 @@
             </div>
         </div>
     </div>
-
+    <div ng-if="feed.length==0" class="col-xs-12 text-center">
+    No Record Found
+    </div>
     <!-- 
     <div class="col-xs-12 col-md-6 col-lg-4 item">
       <div class="timeline-block">

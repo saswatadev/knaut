@@ -27,13 +27,12 @@
   z-index: 4;
 }
 .coverphoto-container .actions .chooser {
-  display: none;
   list-style: none;
   margin: 0;
   padding: 0;
   z-index: 5;
 }
-.coverphoto-container .actions .chooser ul,
+/*.coverphoto-container .actions .chooser ul,
 .coverphoto-container .actions .chooser li {
   margin: 0;
   padding: 0;
@@ -55,7 +54,7 @@
 }
 .coverphoto-container .actions .chooser .sub-menu {
   display: none;
-}
+}*/
 .coverphoto-container .actions .edit {
   display: none;
   list-style: none;

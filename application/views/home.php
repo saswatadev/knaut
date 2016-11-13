@@ -164,6 +164,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
   <script src="assets/js/vendor/angular/angular-busy.js"></script>  
   <script src="assets/js/vendor/angular/angular-cookies.min.js"></script>
   <script src="assets/js/vendor/angular/multiple-select.min.js"></script>
+  <script src="assets/js/vendor/angular/checklist-model.js"></script>
   <!-- App Scripts Bundle
     Includes Custom Application JavaScript used for the current theme/module;
     Do not use it simultaneously with the standalone modules below. -->
@@ -172,9 +173,12 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
   <script src="app/app.config.js"></script>
   <script src="assets/js/app/app.js"></script>  
   <script src="app/components/home/home.directives.js"></script>
+  <script src="app/components/dashboard/dashboard.knaut.directives.js"></script>
+  <script src="app/components/dashboard/dashboard.sidebar.directives.js"></script>
   <script src="app/components/dashboard/dashboard.directives.js"></script>  
   <script src="app/components/dashboard/dashboard.profile.directives.js"></script>
   <script src="app/components/user/user.directives.js"></script>
+  <script src="app/shared/helper.js"></script>
   <script src="app/app.states.js"></script>
   <!-- App Scripts Standalone Modules
     As a convenience, we provide the entire UI framework broke down in separate modules

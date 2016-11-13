@@ -1,24 +1,5 @@
 angular.module('app')
 
-    .directive('dynamicUrl', function () {
-        return {
-            restrict: 'A',
-            link: function postLink(scope, element, attr) {
-                element.attr('src', attr.dynamicUrlSrc);
-            }
-        };
-    })
-
-    .filter('limitHtml', function() {
-        return function(text, limit) {
-
-            var changedString = String(text).replace(/<[^>]+>/gm, '');
-            var length = changedString.length;
-
-            return length > limit ? changedString.substr(0, limit - 1)+'....' : changedString;
-        }
-    })
-
     .directive('dashboard',["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
         return {            
             template: '<div class="st-container">\
@@ -47,32 +28,9 @@ angular.module('app')
         };
     }])
 
-    .directive('dashboardAddKnaut',["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
-        return {
-            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/dashboard.add.knaut.view.html',
-            controllerAs : 'a',
-            controller: ['$scope', 'ajaxService', '$rootScope', '$cookieStore', '$location', function($scope, ajaxService, $rootScope, $cookieStore, $location){
-                a = this;
-                var param = {'user_id' : $cookieStore.get('userId'), 'passkey' : $cookieStore.get('passKey'), 'member_id' : $cookieStore.get('userId'), 'page': 1 , 'page_size': 100};
-                ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/getFollowerConnection.json', function(result){
-                    if(result){
-                        if (result.response.status.action_status == 'true') {
-                            a.followers = result.response.dataset.follower_list;
-                            console.log(a.followers);
-                        } else {
-                            a.followers = [];
-                        }
-                        
-                    }
-                    
-                }); 
-            }]
-        };
-    }])
-
     .directive('dashboardNavbar',["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
         return {
-            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/common/dashboard.common.navbar.view.html',
+            templateUrl: CONFIG.baseUrl+'app/components/dashboard/views/common/dashboard.common.navbar.view.html',
             controller: ['$scope', '$rootScope', '$cookieStore', '$location', function($scope, $rootScope, $cookieStore, $location){
                 $scope.logOut = function(){
                     $cookieStore.remove('userId');
@@ -85,186 +43,173 @@ angular.module('app')
         };
     }])
 
-    .directive('dashboardSidebar', ["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
+    .directive('dashboardSubNavbarUpperMenu',["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
         return {
-            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/common/dashboard.common.sidebar.view.html',
-            controllerAs : 's',
-            controller: function(ajaxService, $scope, $cookieStore, $location, $rootScope){
-                s = this;
-                var param = {'member_id' : $cookieStore.get('userId'),'user_id' : $cookieStore.get('userId'), 'passkey' : $cookieStore.get('passKey'), 'member_id' : $cookieStore.get('userId'), 'page': 1 , 'page_size': 5};
-                ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/details.json', function(result){
-                    if(result){
-                        if (result.response.status.action_status == 'true') {
-                            s.profileDetails = result.response.dataset;
-                            $rootScope.profileDetails = result.response.dataset;
-                            $rootScope.profileDetails.profile_img = $rootScope.profileDetails.profile_img ? $rootScope.profileDetails.profile_img : CONFIG.baseUrl+'assets/images/no_profile_image.png';
-                        } else {
-                            s.profileDetails = '';
-                        }
-                        
-                    }
-                    $(function() {
-                      $(".profileImage").CoverPhoto({
-                        currentImage: s.profileDetails.profile_img,
-                        editable: true,
-                        height : 150,
-                        width : 150,
-                      });
-                      $(".profileImage").bind('coverPhotoUpdated', function(evt, dataUrl) {
-                        $(".output").empty();
-                        $("<img>").attr("src", dataUrl).appendTo(".output");
-                        var param = {'user_id' : $cookieStore.get('userId'), 'passkey' : $cookieStore.get('passKey'), 'userfile' : dataUrl};
-                        ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/addProfilePicture.json', function(result){
-                            if(result){
-                                if (result.response.status.action_status == 'true') {
-                                    return true;
-                                } else {
-                                    return false;
-                                }
-                                
-                            }
-                            
-                        });
-
-                      });
-                    }); 
-                    
-                }); 
-            }
-        };
-	}])
-
-    .directive('followingSidebar', ["CONFIG", '$rootScope', 'ajaxService', function(CONFIG, $rootScope, ajaxService) {
-        return {
-            template: '<ul class="sidebar-menu">\
-                            <li class="hasSubmenu"> \
-                                <a data-toggle="collapse" href="#following"> \
-                                    <i class="fa fa-users" aria-hidden="true"></i> \
-                                <span>Following{{f.followingUser}}</span></a>\
-                                <ul ng-if="f.followingUser.length>0" class="panel-collapse collapse" id="following">\
-                                  <li ng-repeat="u in f.followingUser"><a href="#"><i class="fa fa-circle-o"></i> <span>Saswata</span></a></li>\
-                                  <li class="no_user"><a ng-href="{{baseUrl}}dashboard/following">More</a></li>\
-                                </ul>\
-                                <ul ng-if="!f.followingUser" class="panel-collapse collapse" id="following">\
-                                  <li class="no_user">No following user</li>\
-                                  <li class="no_user"><a ng-href="{{baseUrl}}dashboard/following">More</a></li>\
-                                </ul>\
-                          </li>\
-                        </ul>',
-            controllerAs : 'f',
-            controller: function($scope, $cookieStore, $location){
-                f = this;
-                f.followingUser = [];
-                var param = {'user_id' : $cookieStore.get('userId'), 'passkey' : $cookieStore.get('passKey'), 'member_id' : $cookieStore.get('userId'), 'page': 1 , 'page_size': 5};
-                ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/getFollowingConnection.json', function(result){
-                    if(result){
-                        if (result.response.status.action_status == 'true') {
-                            f.followingUser = result.response.dataset.following_list;
-                        } else {
-                            f.followingUser = [];
-                        }
-                        
-                    }
-                    
-                }); 
-            }
-        };
-    }])
-
-    .directive('followerSidebar', ["CONFIG", '$rootScope', 'ajaxService', function(CONFIG, $rootScope, ajaxService) {
-        return {
-            template: '<ul class="sidebar-menu">\
-                            <li class="hasSubmenu">\
-                            <a data-toggle="collapse" href="#followers">\
-                                <i class="fa fa-users" aria-hidden="true"></i>\
-                                    <span>Followers</span></a>\
-                                <ul ng-if="f.followingUser.length>0" class="panel-collapse collapse" id="followers">\
-                                    <li ng-repeat="fu in f.followingUser"><a href="#"><i class="fa fa-circle-o"></i> <span>Saswata</span></a></li>\
-                                  <li class="no_user"><a ng-href="{{baseUrl}}dashboard/followers">More</a></li>\
-                                </ul>\
-                                <ul ng-if="!f.followingUser" class="panel-collapse collapse" id="followers">\
-                                    <li class="no_user">No followers</li>\
-                                    <li class="no_user"><a ng-href="{{baseUrl}}dashboard/followers">More</a></li>\
-                                </ul>\
-                          </li>\
-                        </ul>',
-            controllerAs : 'f',
-            controller: function($scope, $cookieStore, $location){
-                f = this;
-                var param = {'user_id' : $cookieStore.get('userId'), 'passkey' : $cookieStore.get('passKey'), 'member_id' : $cookieStore.get('userId'), 'page': 1 , 'page_size': 5};
-                ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/getFollowerConnection.json', function(result){
-                    if(result){
-                        if (result.response.status.action_status == 'true') {
-                            f.followingUser = result.response.dataset.following_list;
-                        } else {
-                            f.followingUser = '';
-                        }
-                        
-                    }
-                    
-                }); 
-            }
-        };
-    }])
-
-    .directive('dashboardKnautboard',["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
-        return {
-            templateUrl: CONFIG.baseUrl+'app/components/dashboard/views/dashboard.knautboard.view.html',
-            controllerAs: 'k',
-            controller: function(ajaxService, CONFIG, $scope, $cookieStore, $location){
-                k = this;
-                var param = {
-                            'user_id' : $cookieStore.get('userId'), 
-                            'passkey' : $cookieStore.get('passKey'),
-                            'member_id' : $cookieStore.get('userId')
-                        };
-
-                ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/getallProfileFeed.json', function(result){
-                    if(result){
-                        if (result.response.status.action_status == 'true') {
-                            k.knautFeed = result.response.dataset;
-                        } else {
-                            return false;
-                        }
-                        
-                    }
-                    
-                });
-            }
+            templateUrl: CONFIG.baseUrl+'app/components/dashboard/views/common/dashboard.common.subnavbar.upper.menu.view.html',
+            controllerAs: 's',
+            controller: function($rootScope, $timeout, $cookieStore, $scope, ajaxService){
+                
+            }   
         };
     }])
 
     .directive('dashboardSubNavbar',["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
         return {
-            templateUrl: CONFIG.baseUrl+'app/components/dashboard/views/common/dashboard.common.subnavbar.view.html'
-        };
-    }])
-    .directive('dashboardSubNavbarUpperSection',["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
-        return {
-            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/common/dashboard.common.subnavbar.uppersection.view.html'
+            templateUrl: CONFIG.baseUrl+'app/components/dashboard/views/common/dashboard.common.subnavbar.view.html',
+            controllerAs: 's',
+            controller: function($rootScope, $timeout, $cookieStore, $scope, ajaxService){
+                $rootScope.searchKeyword = '';
+                s = this;
+                s.searchCategoryType = '';
+                s.searchSortType = '';
+                s.searchPopularType = '';
+                s.searchByCategory = function(type){
+                    s.searchCategoryType = type;
+                    s.getFilteredKnaut();
+                }
+                s.searchBySort = function(type){
+                    s.searchSortType = type;
+                    s.getFilteredKnaut();
+                }
+                s.searchByPopularity = function(type){
+                    s.searchPopularType = type;
+                    s.getFilteredKnaut();
+                }
+
+                s.getFilteredKnaut = function(){
+                    var param = {
+                            'user_id' : $cookieStore.get('userId'), 
+                            'passkey' : $cookieStore.get('passKey'),
+                            'member_id' : $cookieStore.get('userId'),
+                            'category' : s.searchCategoryType,
+                            'sort' : s.searchSortType,
+                            'popular' : s.searchPopularType
+                        };
+
+                    ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/getKnautBoardFeeds.json', function(result){
+                        if(result){
+                            if (result.response.status.action_status == 'true') {
+                                $rootScope.knautFeed = result.response.dataset;
+                            } else {
+                                return false;
+                            }
+                            
+                        }
+                        
+                    });
+                }
+            }   
         };
     }])
 
-    .directive('dashboardFeed', ["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
+    .directive('dashboardSubNavbarUpperSection',["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
         return {
-            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/common/dashboard.common.feed.view.html',
+            templateUrl: CONFIG.baseUrl+'app/components/dashboard/views/common/dashboard.common.subnavbar.uppersection.view.html'
+        };
+    }])
+
+    .directive('dashboardFeed', ["CONFIG", 'ajaxService', '$cookieStore', '$rootScope', function(CONFIG, ajaxService, $cookieStore, $rootScope) {
+        return {
+            templateUrl: CONFIG.baseUrl+'app/components/dashboard/views/common/dashboard.common.feed.view.html',
+            transclude : true,
             scope: {
                 feed: '=',
             },
-            link: function (scope, element, attrs) {
-            }        
+            controller:function($rootScope, $timeout, $cookieStore, $scope, ajaxService){
+
+                $scope.knautList = [];
+                $scope.successMessage = '';
+                $scope.setupPopOver = function(){
+                    $("[data-toggle=popover]").popover({
+                            html: true, 
+                            content: function() {
+                                  return $('#popover-content').html();
+                                }
+                        });
+                }
+
+                $scope.openShareKnaut = function(postId){
+                    $scope.postId = postId;
+                }
+
+                $(document).on('submit', 'form[name="knautShare"]', function(){
+                    var knautgroupselected = [];
+                    $(this).find(':checkbox:checked').each(function(i){
+                      knautgroupselected[i] = $(this).val();
+                    });
+                    if(knautgroupselected.length>0){
+                        var param = {'user_id' : $cookieStore.get('userId'), 'passkey' : $cookieStore.get('passKey'), 'member_id' : $cookieStore.get('userId'), 'group_ids': knautgroupselected.join() , 'post_id': $(this).find('input[name="postid"]').val()};
+                        ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/addKnaut.json', function(result){
+                            if(result){
+                                if (result.response.status.action_status == 'true') {
+                                } else {
+                                }
+                            }
+                            
+                        }); 
+                    }
+                })
+
+                $(document).on('click', 'form[name="knautShare"] .allgroup', function(){
+                    var knautgroupselected = [];
+                    angular.forEach($rootScope.knautList,function(value, key){
+                      knautgroupselected[key] = value.TblGroup.id;
+                    })
+                    if(knautgroupselected.length>0){
+                        var param = {'user_id' : $cookieStore.get('userId'), 'passkey' : $cookieStore.get('passKey'), 'member_id' : $cookieStore.get('userId'), 'group_ids': knautgroupselected.join() , 'post_id': $(this).data('postId')};
+                        ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/addKnaut.json', function(result){
+                            if(result){
+                                if (result.response.status.action_status == 'true') {
+                                } else {
+                                }
+                            }
+                            
+                        }); 
+                    }
+                })
+
+                $(document).on('submit', 'form[name="knautSharefriends"]', function(){
+                    var knautfriendselected = [];
+                    var inc = 0;
+                    $(this).find(':checkbox:checked').each(function(i){
+                        if($(this).val()!='on'){
+                            knautfriendselected[inc] = $(this).val();
+                            inc++;   
+                        }
+                    });
+                    if(knautfriendselected.length>0){
+                        var param = {'user_id' : $cookieStore.get('userId'), 'passkey' : $cookieStore.get('passKey'), 'member_id' : $cookieStore.get('userId'), 'member_ids': knautfriendselected.join() , 'post_id': $(this).find('input[name="postidFriends"]').val()};
+                        ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/addKnaut.json', function(result){
+                            if(result){
+                                if (result.response.status.action_status == 'true') {
+                                    $scope.successMessage = 'You shared successfully.';
+                                    $timeout(function() {
+                                        $scope.successMessage = '';
+                                    }, 4000);
+                                } else {
+                                }
+                            }
+                            
+                        }); 
+                    }
+                })
+                
+                $(document).on('click', '.custom-user-click', function(){
+                  $("[data-toggle=popover]").popover('hide');  
+                })
+            }
         };
     }])
 
     .directive('dashboardChat', ["CONFIG", '$rootScope', function(CONFIG, $rootScope) {
         return {
-            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/common/dashboard.common.chat.view.html'
+            templateUrl: CONFIG.baseUrl+'app/components/dashboard/views/common/dashboard.common.chat.view.html'
         };
     }])
     
     .directive('dashboardPost', ["CONFIG", '$rootScope', '$validation', function(CONFIG, $rootScope, $validationProvider) {
         return {
-            templateUrl: CONFIG.baseUrl+'/app/components/dashboard/views/dashboard.post.view.html',
+            templateUrl: CONFIG.baseUrl+'app/components/dashboard/views/dashboard.post.view.html',
             controllerAs: 'ur2',
             controller: function(ajaxService, CONFIG, $scope, $cookieStore, $location){
                 ur2 = this;

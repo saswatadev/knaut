@@ -178,6 +178,13 @@ angular.module('app')
                 url: '/post',
                 template: '<dashboard-post></dashboard-post>',
             })
+
+            .state('myknaut/:knautId', {
+                parent : 'dashboard',
+                //dashboard/post
+                url: '/myknaut/:knautId',
+                template: '<dashboard-my-knaut></dashboard-my-knaut>',
+            })
             
         }
     ]

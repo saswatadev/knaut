@@ -6,19 +6,25 @@
   <!-- extra div for emulating position:fixed of the menu -->
   <div class="st-content-inner">
     <!--Dashboard sub nab bar is displayed here-->
-    <dashboard-sub-navbar></dashboard-sub-navbar>
+    <!-- <dashboard-sub-navbar></dashboard-sub-navbar> -->
     <!--Dashboard add knaut section is displayed here-->
     <div class="container-fluid">      
 		<div class="row">
 	        <div class="col-md-12">
-	          <h3 class="page-section-heading">Add Knaut</h4>
+	        <div class="alert alert-success" ng-show="a.successMessage">
+				{{a.successMessage}}
+			</div>
+        	<div class="alert alert-warning" ng-show="a.errorMessage">
+				{{a.errorMessage}}
+			</div>
+	          <h3>Add Knaut</h4>
 	          <div class="panel panel-default">
 	            <div class="panel-body">
-	              <form name="editform" class="form-horizontal" role="form">
+	              <form name="addKnaut" class="form-horizontal" role="form">
 	                <div class="form-group">
 	        		    <label for="First name" class="col-sm-3 control-label">Knuat name <span class="mandatory_field_star">*</span></label>
 	                    <div class="col-sm-9">
-	                    	<input type="text" ng-model="a.knutadd.name" name="name" validator="required" placeholder="Name" class="f1-first-name form-control">
+	                    	<input type="text" ng-model="a.knautadd.name" name="name" validator="required" placeholder="Name" class="f1-first-name form-control">
 	                	</div>
 	                </div>
 	                <div class="form-group">
@@ -31,13 +37,13 @@
 	                    <label for="Last name" class="col-sm-3 control-label">Select Friends </label>
 	                    <div class="col-sm-9">          
                     		<div class="checkbox select-header">
-								<input type="checkbox" id="inlineCheckbox1" value="option1">
-								<label for="inlineCheckbox1">Select All Friends</label>
+								<input type="checkbox" ng-model="a.allFriends" id="inlineCheckbox" ng-click="a.checkAllFriends();">
+								<label for="inlineCheckbox">Select All Friends</label>
 							</div>
 							<div class="select-body">
-								<div class="checkbox checkbox-inline" ng-repeat="f in a.followers">
-									<input type="checkbox" value="{{f.id}}">
-									<label for="inlineCheckbox1">
+								<div class="checkbox checkbox-inline" ng-repeat="(key,f) in a.followers">
+									<input checklist-model="a.knautadd.friends" name="friends[]" checklist-value="f.id" id="inlineCheckbox{{key}}" type="checkbox" ng-checked="a.allFriends">
+									<label for="inlineCheckbox{{key}}">
 										<div class="check-image">
 											<img ng-if="f.profile_img" ng-src="{{f.profile_img}}" height="40" width="40"/>
 											<img ng-if="!f.profile_img" ng-src="{{baseUrl}}assets/images/no_profile_image.png" height="40" width="40"/>
@@ -52,7 +58,7 @@
 	                </div>  
 	                <div class="form-group margin-none">
 	                  <div class="col-sm-offset-3 col-sm-9">
-	                    <button type="submit" validation-submit="editform" ng-click="e.editSubmit();" class="btn btn-primary">Update</button>
+	                    <button type="submit" validation-submit="addKnaut" ng-click="a.createKnaut();" class="btn btn-primary">Create KNAUT</button>
 	                  </div>
 	                </div>
 	              </form>
@@ -61,7 +67,6 @@
 	        </div>
 	  	</div>
 	</div>
-
   </div>
   <!-- /st-content-inner -->
 </div>

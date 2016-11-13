@@ -8,9 +8,9 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid profile-nav">
     <ul class="nav navbar-nav navbar-left">
-      <li>205 Followers</li>
-      <li>45 Knauted</li>
-      <li>501 Liked</li>
+      <li>{{p.profileDetails.no_follower}} Followers</li>
+      <li>{{p.profileDetails.no_following}} Following</li>
+      <li>{{p.profileDetails.no_knauted}} Knauted</li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="active"><a href="index.html">All Content</a></li>
@@ -18,7 +18,7 @@
     </ul>
   </div>
 </nav>  
-<div class="container-fluid">
+<div class="container-fluid"> 
   <div class="timeline row" data-toggle="isotope">
     <div class="col-xs-12 col-md-12 col-lg-12 item">
       <div class="timeline-block">                  
@@ -93,4 +93,4 @@
   </div> 
 </div>
 <!--Dashboard feed section is displayed here-->
-<dashboard-feed></dashboard-feed>
+<dashboard-feed feed="p.knautFeed"></dashboard-feed>

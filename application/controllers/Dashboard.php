@@ -114,4 +114,19 @@ class Dashboard extends CI_Controller {
 		$data['title'] = "Knaut|Dashboard|Post";
 		$this->load->view('home', $data);	
 	}
+
+	/**
+	 *Function name 				: myknaut()
+	 *Added date 			 		: 13.11.2016
+	 *Added by                  	: Saswata Pal
+	 *Description       			: My knaut
+	 */	
+	public function myknaut()
+	{
+		$data = array();
+		$data['title'] = "Knaut|Dashboard|My Knaut";
+		$this->load->view('home', $data);	
+	}
+
+
 }

@@ -17,8 +17,9 @@ angular.module('app')
                     if(result){
                         //console.log(result);
                         if (result.response.status.action_status == 'true') {
-                            p.profileDetails = result.response.dataset;                            
-                            $(function() {
+                            p.profileDetails = result.response.dataset;  
+                            p.profileDetails.cover_img = p.profileDetails.cover_img ? p.profileDetails.cover_img : CONFIG.baseUrl+'assets/images/knaut-default_pic.jpg';                         
+                            $(function() { 
                               $(".coverphoto").CoverPhoto({
                                 currentImage: p.profileDetails.cover_img,
                                 editable: true,
@@ -51,6 +52,25 @@ angular.module('app')
                         
                     }                    
                 }); 
+
+                p = this;
+                var param = {
+                            'user_id' : $cookieStore.get('userId'), 
+                            'passkey' : $cookieStore.get('passKey'),
+                            'member_id' : $cookieStore.get('userId')
+                        };
+
+                ajaxService.AjaxPhpPost(param, CONFIG.ApiUrl+'profiles/getallProfileFeed.json', function(result){
+                    if(result){
+                        if (result.response.status.action_status == 'true') {
+                            p.knautFeed = result.response.dataset;
+                        } else {
+                            return false;
+                        }
+                        
+                    }
+                    
+                });
             }
         };
     }])

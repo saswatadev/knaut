@@ -187,6 +187,16 @@ div.knaut-concept .create-icon-border {
     top: 22%;
     width: 66%;
 }
+
+div.popover-content{
+  min-width: 150px;
+}
+
+ul.knaut-share{
+  list-style: none;
+  margin-left:-26px;
+  min-width: 170px;
+}
 .breakpoint-768 .create-icon-border,.breakpoint-320 .create-icon-border, .breakpoint-480 .create-icon-border{
   display: none;
 }
@@ -358,8 +368,14 @@ div.profileImage .coverphoto-container .coverphoto-photo-container img{
 .coverphoto-container .actions .edit .item,.coverphoto-container .actions .edit .item:hover{
   background-color: #22958B;
 }
-.coverphoto-container .actions .chooser .item,.coverphoto-container .actions .chooser .item:hover{
+/*.coverphoto-container .actions .chooser .item,.coverphoto-container .actions .chooser .item:hover{
   background-color: #22958B;
+}*/
+.cover.overlay ul.chooser  .btn-cover,ul.chooser  .btn-cover {
+    background-color: #22958B;
+    border-color: transparent;
+    color: #ffffff;
+    z-index: 2;
 }
 .navbar-skin-cover .navbar-nav .open > a, .navbar-skin-cover .navbar-nav .open > a:focus, .navbar-skin-cover .navbar-nav .open > a:hover {
     background-color: #66cecc;
@@ -378,6 +394,9 @@ div.profileImage .coverphoto-container .coverphoto-photo-container img{
   margin-top: 10px;
 }
 
+.knaut-checkbox.checkbox{
+  padding-left: 40px;
+}
 
 /*user registraion login*/
 div.user-reg{

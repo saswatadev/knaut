@@ -15,17 +15,13 @@
               <!-- simple dropdown -->
               <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
-  Category <span class="caret"></span>
-  </a>
+                Category <span class="caret"></span>
+                </a>
                 <ul role="menu" class="dropdown-menu">
-                  <li><a href="#">Essentials</a></li>
-                  <li class="active"><a href="#">Active Link</a></li>
-                  <li><a href="#">Timeline</a></li>
-                  <li><a href="#">Charts</a></li>
-                  <li><a href="#">Layouts</a></li>
-                  <li><a href="#">Sidebars</a></li>
-                  <li><a href="#">Maps</a></li>
-                  <li><a href="#">Media</a></li>
+                  <li ng-class="s.searchCategoryType=='A' ? 'active' : ''"><a ng-click="s.searchByCategory('A');" href="javascript:void(0);">Audio</a></li>
+                  <li ng-class="s.searchCategoryType=='V' ? 'active' : ''"><a ng-click="s.searchByCategory('V');" href="javascript:void(0);">Video</a></li>
+                  <li ng-class="s.searchCategoryType=='B' ? 'active' : ''"><a ng-click="s.searchByCategory('B');" href="javascript:void(0);">Blog</a></li>
+                  <li ng-class="s.searchCategoryType=='I' ? 'active' : ''"><a ng-click="s.searchByCategory('I');" href="javascript:void(0);">Image</a></li>
                 </ul>
               </li>
               <!-- // END simple dropdown -->
@@ -34,17 +30,13 @@
               <!-- simple dropdown -->
               <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
-  Sort <span class="caret"></span>
-  </a>
+                Sort <span class="caret"></span>
+                </a>
                 <ul role="menu" class="dropdown-menu">
-                  <li><a href="#">Essentials</a></li>
-                  <li class="active"><a href="#">Active Link</a></li>
-                  <li><a href="#">Timeline</a></li>
-                  <li><a href="#">Charts</a></li>
-                  <li><a href="#">Layouts</a></li>
-                  <li><a href="#">Sidebars</a></li>
-                  <li><a href="#">Maps</a></li>
-                  <li><a href="#">Media</a></li>
+                  <li ng-class="s.searchSortType=='P' ? 'active' : ''"><a ng-click="s.searchBySort('P');" href="javascript:void(0);">Priority</a></li>
+                  <li ng-class="s.searchSortType=='G' ? 'active' : ''"><a ng-click="s.searchBySort('G');" href="javascript:void(0);">Genre</a></li>
+                  <li ng-class="s.searchSortType=='H' ? 'active' : ''"><a ng-click="s.searchBySort('H');" href="javascript:void(0);">Hidden</a></li>
+                  <li ng-class="s.searchSortType=='K' ? 'active' : ''"><a ng-click="s.searchBySort('K');" href="javascript:void(0);">Knaut</a></li>
                 </ul>
               </li>
               <!-- // END simple dropdown -->
@@ -53,17 +45,13 @@
               <!-- simple dropdown -->
               <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
-  Popular <span class="caret"></span>
-  </a>
+                Popular <span class="caret"></span>
+                </a>
                 <ul role="menu" class="dropdown-menu">
-                  <li><a href="#">Essentials</a></li>
-                  <li class="active"><a href="#">Active Link</a></li>
-                  <li><a href="#">Timeline</a></li>
-                  <li><a href="#">Charts</a></li>
-                  <li><a href="#">Layouts</a></li>
-                  <li><a href="#">Sidebars</a></li>
-                  <li><a href="#">Maps</a></li>
-                  <li><a href="#">Media</a></li>
+                  <li ng-class="s.searchPopularType=='C' ? 'active' : ''"><a ng-click="s.searchByPopularity('C');" href="javascript:void(0);">Comments</a></li>
+                  <li ng-class="s.searchPopularType=='V' ? 'active' : ''"><a ng-click="s.searchByPopularity('V');" href="javascript:void(0);">Views</a></li>
+                  <li ng-class="s.searchPopularType=='R' ? 'active' : ''"><a ng-click="s.searchByPopularity('R');" href="javascript:void(0);">Rating</a></li>
+                  <li ng-class="s.searchPopularType=='K' ? 'active' : ''"><a ng-click="s.searchByPopularity('K');" href="javascript:void(0);">Knauted</a></li>
                 </ul>
               </li>
               <!-- // END simple dropdown -->

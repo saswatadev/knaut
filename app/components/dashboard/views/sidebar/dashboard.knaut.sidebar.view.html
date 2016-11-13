@@ -1,0 +1,25 @@
+<ul class="sidebar-menu">          
+  <li class="hasSubmenu open">
+    <a data-toggle="collapse" href="#myknaut">
+      <i class="icon-user-1"></i> 
+      <span>My Knaut</span></a>
+        <ul ng-if="f.knautList.length>0" class="in panel-collapse collapse" id="myknaut">
+            <li ng-repeat="fu in f.knautList">
+                <div>
+                    <!--  class="checkbox checkbox-info checkbox-circle knaut-checkbox"<input id="checkbox{{$index}}" type="checkbox" checked> -->
+                    <label for="checkbox{{$index}}"> 
+                      <a ng-href="{{baseUrl}}dashboard/myknaut/{{fu.TblGroup.id}}">
+                        <i class="fa fa-circle-o"></i>
+                        <span>{{fu.TblGroup.group_name}}</span>
+                      </a>
+                    </label>
+                </div>
+            </li>
+            <li class="no_user"><a ng-href="javascript:void(0);">More</a></li>       
+        </ul>
+        <ul ng-if="!f.knautList" class="panel-collapse collapse" id="myknaut">
+            <li class="no_user">No Knaut Added</li>
+            <li class="no_user"><a ng-href="javascript:void(0);">More</a></li>
+        </ul>
+  </li>
+</ul>

@@ -1,0 +1,29 @@
+<nav class="navbar navbar-subnav navbar-static-top margin-bottom-none navbar-skin-cover navbar-skin-cover-white" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header navbar-primary">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#subnav">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="fa fa-ellipsis-h"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="subnav"> 
+      <div class="row upper-section">
+        <div class="col-sm-12 col-xs-12 col-md-5 col-md-offset-4 col-lg-5 col-lg-offset-4">
+          <ul class="nav navbar-nav">
+            <li ng-class="$state.current.parent=='profile' ? 'active' : ''"><a ng-href="{{baseUrl}}dashboard/profile/home">Profile</a></li>
+            
+            <li ng-class="$state.current.name=='knautboard' && $state.current.parent=='dashboard' ? 'active' : ''"><a ng-href="
+            {{baseUrl}}dashboard/knautboard">Knautboard</a></li>
+            <li ng-class="$state.current.name=='delvein' && $state.current.parent=='dashboard' ? 'active' : ''"><a ng-href="{{baseUrl}}dashboard/delvein">Delve-in</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
+          <div id="collapse-search-2" class="navbar-collapse collapse">
+          </div>
+        </div>
+      </div>
+      <div class="row sort-knaut">
+      </div>
+    </div>
+  </div>
+</nav>
