@@ -111,7 +111,6 @@ angular.module('app')
     .directive('dashboardFeed', ["CONFIG", 'ajaxService', '$cookieStore', '$rootScope', function(CONFIG, ajaxService, $cookieStore, $rootScope) {
         return {
             templateUrl: CONFIG.baseUrl+'app/components/dashboard/views/common/dashboard.common.feed.view.html',
-            transclude : true,
             scope: {
                 feed: '=',
             },
